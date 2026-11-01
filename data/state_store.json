@@ -1,0 +1,1162 @@
+{
+  "user": {
+    "id": "student-001",
+    "name": "Ahmed Mostafa",
+    "email": "ahmed.student@depi.edu.eg",
+    "university": "Faculty of Artificial Intelligence",
+    "semester": "Fall 2026 - Senior",
+    "major": "Computer Science & Artificial Intelligence",
+    "bio": "Aiming for an AI Engineer role while maintaining a high GPA in senior courses.",
+    "avatar_url": "",
+    "created_at": "2026-10-31T09:42:51.134789+00:00"
+  },
+  "adaptive_model": {
+    "effective_focus_duration_mins": 35,
+    "peak_productivity_window": "09:00-11:00",
+    "task_delay_factor": 1.3,
+    "learning_rate_velocity": 0.66,
+    "avg_task_completion_ratio": 0.76,
+    "procrastination_patterns": [
+      "Heavy lecture days (> 4 hrs classes)",
+      "Complex formal theory topics (Automata & Proofs)"
+    ],
+    "topic_mastery": {
+      "Automata & Formal Languages": 40.0,
+      "Context-Free Grammars": 62.0,
+      "Trend AI & LLM Systems": 100.0,
+      "Vector Embeddings & RAG": 92.0
+    },
+    "weak_topics": [
+      "Pumping Lemma proofs",
+      "NFA epsilon transitions"
+    ],
+    "strong_topics": [
+      "Trend AI Architecture",
+      "RAG Retrieval Mechanisms",
+      "Transformer Attention Layers"
+    ],
+    "burnout_risk_score": "Medium",
+    "motivation_index": 0.78,
+    "current_system_mode": "PREEMPTIVE_RESTRUCTURE",
+    "feature_confidence": {
+      "peak_window": 0.85,
+      "focus_duration": 0.82,
+      "delay_factor": 0.79,
+      "burnout_risk": 0.7
+    },
+    "last_updated": "2026-11-01T04:45:04.784730+00:00"
+  },
+  "university_schedule": [
+    {
+      "id": "lec-1",
+      "day": "Monday",
+      "date": "2026-11-02",
+      "start": "09:00",
+      "end": "12:00",
+      "title": "Automata & Formal Languages Lecture",
+      "room": "Hall 3B",
+      "instructor": "Dr. Ahmed Zakzouk"
+    },
+    {
+      "id": "lec-2",
+      "day": "Monday",
+      "date": "2026-11-02",
+      "start": "13:00",
+      "end": "15:00",
+      "title": "Automata Lab & Section",
+      "room": "Lab 4",
+      "instructor": "Eng. Sarah"
+    },
+    {
+      "id": "lec-3",
+      "day": "Wednesday",
+      "date": "2026-11-04",
+      "start": "10:00",
+      "end": "13:00",
+      "title": "Trend AI & Modern Deep Learning",
+      "room": "Hall 1A",
+      "instructor": "Dr. Tarek"
+    },
+    {
+      "id": "lec-4",
+      "day": "Thursday",
+      "date": "2026-11-05",
+      "start": "09:00",
+      "end": "11:00",
+      "title": "Software Engineering Seminar",
+      "room": "Online",
+      "instructor": "Dr. Mona"
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "T101",
+      "parent_milestone_id": "M-AUTO-1",
+      "title": "Automata: DFA Practice & State Minimization",
+      "source": "assessment_remediation",
+      "topic_ref": "Automata & Formal Languages",
+      "estimated_mins": 45,
+      "adjusted_mins": 58,
+      "deadline": "2026-11-03T18:00:00",
+      "priority_weight": 4.5,
+      "cognitive_load": "high",
+      "status": "completed",
+      "scheduled_date": "2026-11-03",
+      "scheduled_start": "09:00",
+      "scheduled_end": "10:00",
+      "rationale": "High cognitive task scheduled during peak window (09:00-11:00) with delay buffer.",
+      "actual_mins": 35
+    },
+    {
+      "task_id": "T102",
+      "parent_milestone_id": "M-AI-1",
+      "title": "Review Trend AI Notes: RAG vs Fine-Tuning",
+      "source": "life_coach",
+      "topic_ref": "Trend AI & LLM Systems",
+      "estimated_mins": 30,
+      "adjusted_mins": 35,
+      "deadline": "2026-11-04T12:00:00",
+      "priority_weight": 3.0,
+      "cognitive_load": "medium",
+      "status": "scheduled",
+      "scheduled_date": "2026-11-03",
+      "scheduled_start": "11:15",
+      "scheduled_end": "11:50",
+      "rationale": "Scheduled before afternoon slump."
+    },
+    {
+      "task_id": "T103",
+      "parent_milestone_id": "M-AUTO-1",
+      "title": "Read Automata Chapter 2: NFA Epsilon Transitions",
+      "source": "assessment_remediation",
+      "topic_ref": "Automata & Formal Languages",
+      "estimated_mins": 40,
+      "adjusted_mins": 52,
+      "deadline": "2026-11-05T20:00:00",
+      "priority_weight": 4.0,
+      "cognitive_load": "high",
+      "status": "pending",
+      "scheduled_date": "2026-11-04",
+      "scheduled_start": "16:00",
+      "scheduled_end": "16:55",
+      "rationale": "Post-lecture review session."
+    },
+    {
+      "task_id": "T104",
+      "title": "learn",
+      "source": "user",
+      "topic_ref": "Automata & Formal Languages",
+      "estimated_mins": 45,
+      "adjusted_mins": 58,
+      "deadline": null,
+      "priority_weight": 3.0,
+      "cognitive_load": "high",
+      "status": "completed",
+      "scheduled_date": "2026-10-31",
+      "rationale": "Adjusted by 1.3x estimation factor from 45m to 58m.",
+      "actual_mins": 35
+    }
+  ],
+  "scheduled_blocks": [
+    {
+      "task_id": "T103",
+      "title": "Read Automata Chapter 2: NFA Epsilon Transitions",
+      "date": "2026-11-01",
+      "start": "09:00",
+      "end": "09:35",
+      "part": 1
+    },
+    {
+      "task_id": "T103",
+      "title": "Read Automata Chapter 2: NFA Epsilon Transitions",
+      "date": "2026-11-01",
+      "start": "09:45",
+      "end": "10:02",
+      "part": 2
+    }
+  ],
+  "goals": [
+    {
+      "goal_id": "G-101",
+      "title": "Score A+ in Automata & Formal Languages",
+      "category": "study",
+      "target_date": "2026-12-25",
+      "why": "Crucial theoretical foundation for compilers and AI parsing.",
+      "status": "active",
+      "strategy_note": "Focus on high-frequency diagnostic quizzes and early chunked micro-practice.",
+      "milestones": [
+        {
+          "id": "M-AUTO-1",
+          "goal_id": "G-101",
+          "title": "Master DFA and NFA equivalence",
+          "status": "in_progress",
+          "criteria": "Score >= 80% on Automata Diagnostic Quiz 1",
+          "due_date": "2026-11-06",
+          "micro_tasks": [
+            {
+              "title": "Subset construction 5 worked examples",
+              "estimated_mins": 30
+            },
+            {
+              "title": "Self-assessment on epsilon-closure",
+              "estimated_mins": 25
+            }
+          ]
+        },
+        {
+          "id": "M-AUTO-2",
+          "goal_id": "G-101",
+          "title": "Pumping Lemma Mastery for Regular Languages",
+          "status": "pending",
+          "criteria": "Successfully solve 3 adversarial proofs without hints",
+          "due_date": "2026-11-18",
+          "micro_tasks": []
+        }
+      ]
+    },
+    {
+      "goal_id": "G-102",
+      "title": "Secure Generative AI Internship at Leading Tech Firm",
+      "category": "career",
+      "target_date": "2027-04-01",
+      "why": "Bridge academic theory with production agentic engineering.",
+      "status": "active",
+      "strategy_note": "Build 2 portfolio projects with LangChain/LangGraph and write tech blogs.",
+      "milestones": [
+        {
+          "id": "M-AI-1",
+          "goal_id": "G-102",
+          "title": "Implement Multi-Agent Orchestrator Prototype",
+          "status": "in_progress",
+          "criteria": "Working prototype with unit test coverage > 85%",
+          "due_date": "2026-11-15",
+          "micro_tasks": [
+            {
+              "title": "Benchmark hybrid retrieval on course PDFs",
+              "estimated_mins": 45
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "goal_id": "G-103",
+      "title": "Maintain Daily Focus Habit & Prevent Late-Night Burnout",
+      "category": "personal",
+      "target_date": "2026-12-31",
+      "why": "Sustained high cognitive performance without mental fatigue.",
+      "status": "active",
+      "strategy_note": "Stick to 35-min pomodoro cycles and wrap up by 22:30.",
+      "milestones": []
+    }
+  ],
+  "habits": [
+    {
+      "name": "Daily Deep Work Block",
+      "streak": 6,
+      "best_streak": 14,
+      "last_completed": "2026-10-30",
+      "freezes_available": 1
+    },
+    {
+      "name": "Evening Reflection & Energy Check-in",
+      "streak": 5,
+      "best_streak": 9,
+      "last_completed": "2026-10-30",
+      "freezes_available": 2
+    }
+  ],
+  "achievements": [
+    {
+      "key": "streak_3",
+      "title": "3-Day Streak: Consistency Starter",
+      "earned_on": "2026-10-27",
+      "description": "Completed 3 consecutive study days unbroken."
+    },
+    {
+      "key": "first_quiz_master",
+      "title": "Diagnostic Explorer",
+      "earned_on": "2026-10-29",
+      "description": "Completed first comprehensive diagnostic quiz."
+    }
+  ],
+  "reflections": [
+    {
+      "id": "ref-1",
+      "date": "2026-10-30",
+      "energy": 3,
+      "mood": "focused",
+      "reflection": "Felt tired after 5 hours of back-to-back lectures on Monday, could not finish the large proof task.",
+      "obstacles": "Lecture fatigue and large monolithic task size",
+      "ai_feedback": "Noticed energy drop post-lecture. Personal Planning will avoid scheduling >40min high-load tasks on lecture days."
+    }
+  ],
+  "predictions": [
+    {
+      "id": "pred-2bca91",
+      "target": "overload_risk",
+      "target_id": "Date: 2026-11-02",
+      "risk_score": 0.7,
+      "risk_level": "High",
+      "rationale": "Scheduled classes total 4 hours on 2026-11-02, creating high fatigue risk for independent study.",
+      "preemptive_action": "Restrict evening study quota to maximum 45 minutes of light flashcard review.",
+      "status": "active",
+      "created_at": "2026-11-01T04:45:04.784344+00:00"
+    },
+    {
+      "id": "pred-e81938",
+      "target": "topic_struggle_risk",
+      "target_id": "Context-Free Grammars",
+      "risk_score": 0.53,
+      "risk_level": "Medium",
+      "rationale": "Mastery in 'Context-Free Grammars' is 62.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma proofs, NFA epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-11-01T04:45:04.784344+00:00"
+    },
+    {
+      "id": "pred-bf1f24",
+      "target": "topic_struggle_risk",
+      "target_id": "Automata & Formal Languages",
+      "risk_score": 0.75,
+      "risk_level": "High",
+      "rationale": "Mastery in 'Automata & Formal Languages' is 40.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma proofs, NFA epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-11-01T04:45:04.784344+00:00"
+    },
+    {
+      "id": "pred-23660c",
+      "target": "overload_risk",
+      "target_id": "Date: 2026-11-02",
+      "risk_score": 0.7,
+      "risk_level": "High",
+      "rationale": "Scheduled classes total 4 hours on 2026-11-02, creating high fatigue risk for independent study.",
+      "preemptive_action": "Restrict evening study quota to maximum 45 minutes of light flashcard review.",
+      "status": "active",
+      "created_at": "2026-10-31T11:44:57.510761+00:00"
+    },
+    {
+      "id": "pred-8da0f0",
+      "target": "topic_struggle_risk",
+      "target_id": "Context-Free Grammars",
+      "risk_score": 0.53,
+      "risk_level": "Medium",
+      "rationale": "Mastery in 'Context-Free Grammars' is 62.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma proofs, NFA epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T11:44:57.510761+00:00"
+    },
+    {
+      "id": "pred-7f24c3",
+      "target": "topic_struggle_risk",
+      "target_id": "Automata & Formal Languages",
+      "risk_score": 0.75,
+      "risk_level": "High",
+      "rationale": "Mastery in 'Automata & Formal Languages' is 40.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma proofs, NFA epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T11:44:57.510761+00:00"
+    },
+    {
+      "id": "pred-06a4bf",
+      "target": "overload_risk",
+      "target_id": "Date: 2026-11-02",
+      "risk_score": 0.7,
+      "risk_level": "High",
+      "rationale": "Scheduled classes total 4 hours on 2026-11-02, creating high fatigue risk for independent study.",
+      "preemptive_action": "Restrict evening study quota to maximum 45 minutes of light flashcard review.",
+      "status": "active",
+      "created_at": "2026-10-31T11:44:27.049358+00:00"
+    },
+    {
+      "id": "pred-2644ab",
+      "target": "topic_struggle_risk",
+      "target_id": "Trend AI & LLM Systems",
+      "risk_score": 0.82,
+      "risk_level": "High",
+      "rationale": "Mastery in 'Trend AI & LLM Systems' is 33.3% (< 65.0%). Unresolved weak concepts: Pumping Lemma proofs, NFA epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T11:44:27.049358+00:00"
+    },
+    {
+      "id": "pred-41bb59",
+      "target": "topic_struggle_risk",
+      "target_id": "Context-Free Grammars",
+      "risk_score": 0.53,
+      "risk_level": "Medium",
+      "rationale": "Mastery in 'Context-Free Grammars' is 62.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma proofs, NFA epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T11:44:27.049358+00:00"
+    },
+    {
+      "id": "pred-3f02d5",
+      "target": "topic_struggle_risk",
+      "target_id": "Automata & Formal Languages",
+      "risk_score": 0.75,
+      "risk_level": "High",
+      "rationale": "Mastery in 'Automata & Formal Languages' is 40.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma proofs, NFA epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T11:44:27.049358+00:00"
+    },
+    {
+      "id": "pred-88b211",
+      "target": "overload_risk",
+      "target_id": "Date: 2026-11-02",
+      "risk_score": 0.7,
+      "risk_level": "High",
+      "rationale": "Scheduled classes total 4 hours on 2026-11-02, creating high fatigue risk for independent study.",
+      "preemptive_action": "Restrict evening study quota to maximum 45 minutes of light flashcard review.",
+      "status": "active",
+      "created_at": "2026-10-31T11:44:03.982420+00:00"
+    },
+    {
+      "id": "pred-af512b",
+      "target": "topic_struggle_risk",
+      "target_id": "Context-Free Grammars",
+      "risk_score": 0.53,
+      "risk_level": "Medium",
+      "rationale": "Mastery in 'Context-Free Grammars' is 62.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma proofs, NFA epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T11:44:03.982420+00:00"
+    },
+    {
+      "id": "pred-17e983",
+      "target": "topic_struggle_risk",
+      "target_id": "Automata & Formal Languages",
+      "risk_score": 0.75,
+      "risk_level": "High",
+      "rationale": "Mastery in 'Automata & Formal Languages' is 40.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma proofs, NFA epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T11:44:03.982420+00:00"
+    },
+    {
+      "id": "pred-c29990",
+      "target": "overload_risk",
+      "target_id": "Date: 2026-11-02",
+      "risk_score": 0.7,
+      "risk_level": "High",
+      "rationale": "Scheduled classes total 4 hours on 2026-11-02, creating high fatigue risk for independent study.",
+      "preemptive_action": "Restrict evening study quota to maximum 45 minutes of light flashcard review.",
+      "status": "active",
+      "created_at": "2026-10-31T11:44:02.277023+00:00"
+    },
+    {
+      "id": "pred-ed589f",
+      "target": "topic_struggle_risk",
+      "target_id": "Context-Free Grammars",
+      "risk_score": 0.53,
+      "risk_level": "Medium",
+      "rationale": "Mastery in 'Context-Free Grammars' is 62.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma proofs, NFA epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T11:44:02.277023+00:00"
+    },
+    {
+      "id": "pred-90a1bc",
+      "target": "topic_struggle_risk",
+      "target_id": "Automata & Formal Languages",
+      "risk_score": 0.75,
+      "risk_level": "High",
+      "rationale": "Mastery in 'Automata & Formal Languages' is 40.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma proofs, NFA epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T11:44:02.277023+00:00"
+    },
+    {
+      "id": "pred-7fcbb9",
+      "target": "task_miss_risk",
+      "target_id": "T104",
+      "risk_score": 0.62,
+      "risk_level": "Medium",
+      "rationale": "Estimated duration (45m) exceeds attention threshold (35m); Historical task delay factor is 1.3x",
+      "preemptive_action": "Deconstruct task into micro-tasks matching 35m focus span and reschedule to peak window.",
+      "status": "active",
+      "created_at": "2026-10-31T11:44:02.277023+00:00"
+    },
+    {
+      "id": "pred-74f9e9",
+      "target": "overload_risk",
+      "target_id": "Date: 2026-11-02",
+      "risk_score": 0.7,
+      "risk_level": "High",
+      "rationale": "Scheduled classes total 4 hours on 2026-11-02, creating high fatigue risk for independent study.",
+      "preemptive_action": "Restrict evening study quota to maximum 45 minutes of light flashcard review.",
+      "status": "active",
+      "created_at": "2026-10-31T11:43:16.735171+00:00"
+    },
+    {
+      "id": "pred-610296",
+      "target": "topic_struggle_risk",
+      "target_id": "Context-Free Grammars",
+      "risk_score": 0.53,
+      "risk_level": "Medium",
+      "rationale": "Mastery in 'Context-Free Grammars' is 62.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma proofs, NFA epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T11:43:16.735171+00:00"
+    },
+    {
+      "id": "pred-79db52",
+      "target": "topic_struggle_risk",
+      "target_id": "Automata & Formal Languages",
+      "risk_score": 0.75,
+      "risk_level": "High",
+      "rationale": "Mastery in 'Automata & Formal Languages' is 40.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma proofs, NFA epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T11:43:16.735171+00:00"
+    },
+    {
+      "id": "pred-a14a0e",
+      "target": "overload_risk",
+      "target_id": "Date: 2026-11-02",
+      "risk_score": 0.7,
+      "risk_level": "High",
+      "rationale": "Scheduled classes total 4 hours on 2026-11-02, creating high fatigue risk for independent study.",
+      "preemptive_action": "Restrict evening study quota to maximum 45 minutes of light flashcard review.",
+      "status": "active",
+      "created_at": "2026-10-31T11:43:12.756328+00:00"
+    },
+    {
+      "id": "pred-20b4eb",
+      "target": "topic_struggle_risk",
+      "target_id": "Context-Free Grammars",
+      "risk_score": 0.53,
+      "risk_level": "Medium",
+      "rationale": "Mastery in 'Context-Free Grammars' is 62.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma Proofs, State Minimization.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T11:43:12.756328+00:00"
+    },
+    {
+      "id": "pred-d7f49a",
+      "target": "topic_struggle_risk",
+      "target_id": "Automata & Formal Languages",
+      "risk_score": 0.65,
+      "risk_level": "High",
+      "rationale": "Mastery in 'Automata & Formal Languages' is 50.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma Proofs, State Minimization.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T11:43:12.756328+00:00"
+    },
+    {
+      "id": "pred-8d5c38",
+      "target": "overload_risk",
+      "target_id": "Date: 2026-11-02",
+      "risk_score": 0.7,
+      "risk_level": "High",
+      "rationale": "Scheduled classes total 4 hours on 2026-11-02, creating high fatigue risk for independent study.",
+      "preemptive_action": "Restrict evening study quota to maximum 45 minutes of light flashcard review.",
+      "status": "active",
+      "created_at": "2026-10-31T10:18:47.106268+00:00"
+    },
+    {
+      "id": "pred-d861f6",
+      "target": "topic_struggle_risk",
+      "target_id": "Context-Free Grammars",
+      "risk_score": 0.53,
+      "risk_level": "Medium",
+      "rationale": "Mastery in 'Context-Free Grammars' is 62.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma Proofs, State Minimization.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T10:18:47.106268+00:00"
+    },
+    {
+      "id": "pred-2c3df9",
+      "target": "topic_struggle_risk",
+      "target_id": "Automata & Formal Languages",
+      "risk_score": 0.65,
+      "risk_level": "High",
+      "rationale": "Mastery in 'Automata & Formal Languages' is 50.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma Proofs, State Minimization.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T10:18:47.106268+00:00"
+    },
+    {
+      "id": "pred-600d4a",
+      "target": "overload_risk",
+      "target_id": "Date: 2026-11-02",
+      "risk_score": 0.7,
+      "risk_level": "High",
+      "rationale": "Scheduled classes total 4 hours on 2026-11-02, creating high fatigue risk for independent study.",
+      "preemptive_action": "Restrict evening study quota to maximum 45 minutes of light flashcard review.",
+      "status": "active",
+      "created_at": "2026-10-31T10:17:41.802464+00:00"
+    },
+    {
+      "id": "pred-348563",
+      "target": "topic_struggle_risk",
+      "target_id": "Context-Free Grammars",
+      "risk_score": 0.53,
+      "risk_level": "Medium",
+      "rationale": "Mastery in 'Context-Free Grammars' is 62.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma Proofs, State Minimization.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T10:17:41.802464+00:00"
+    },
+    {
+      "id": "pred-b7c3c3",
+      "target": "topic_struggle_risk",
+      "target_id": "Automata & Formal Languages",
+      "risk_score": 0.65,
+      "risk_level": "High",
+      "rationale": "Mastery in 'Automata & Formal Languages' is 50.0% (< 65.0%). Unresolved weak concepts: Pumping Lemma Proofs, State Minimization.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T10:17:41.802464+00:00"
+    },
+    {
+      "id": "pred-0de052",
+      "target": "overload_risk",
+      "target_id": "Date: 2026-11-02",
+      "risk_score": 0.7,
+      "risk_level": "High",
+      "rationale": "Scheduled classes total 4 hours on 2026-11-02, creating high fatigue risk for independent study.",
+      "preemptive_action": "Restrict evening study quota to maximum 45 minutes of light flashcard review.",
+      "status": "active",
+      "created_at": "2026-10-31T10:17:15.023148+00:00"
+    },
+    {
+      "id": "pred-d12bef",
+      "target": "topic_struggle_risk",
+      "target_id": "Context-Free Grammars",
+      "risk_score": 0.53,
+      "risk_level": "Medium",
+      "rationale": "Mastery in 'Context-Free Grammars' is 62.0% (< 65.0%). Unresolved weak concepts: NFA to DFA subset construction, Epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T10:17:15.023148+00:00"
+    },
+    {
+      "id": "pred-3dbd1b",
+      "target": "topic_struggle_risk",
+      "target_id": "Automata & Formal Languages",
+      "risk_score": 0.55,
+      "risk_level": "Medium",
+      "rationale": "Mastery in 'Automata & Formal Languages' is 60.0% (< 65.0%). Unresolved weak concepts: NFA to DFA subset construction, Epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T10:17:15.023148+00:00"
+    },
+    {
+      "id": "pred-7e8796",
+      "target": "overload_risk",
+      "target_id": "Date: 2026-11-02",
+      "risk_score": 0.7,
+      "risk_level": "High",
+      "rationale": "Scheduled classes total 4 hours on 2026-11-02, creating high fatigue risk for independent study.",
+      "preemptive_action": "Restrict evening study quota to maximum 45 minutes of light flashcard review.",
+      "status": "active",
+      "created_at": "2026-10-31T10:17:13.321784+00:00"
+    },
+    {
+      "id": "pred-047ef2",
+      "target": "topic_struggle_risk",
+      "target_id": "Context-Free Grammars",
+      "risk_score": 0.53,
+      "risk_level": "Medium",
+      "rationale": "Mastery in 'Context-Free Grammars' is 62.0% (< 65.0%). Unresolved weak concepts: NFA to DFA subset construction, Epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T10:17:13.321784+00:00"
+    },
+    {
+      "id": "pred-59b4a8",
+      "target": "topic_struggle_risk",
+      "target_id": "Automata & Formal Languages",
+      "risk_score": 0.55,
+      "risk_level": "Medium",
+      "rationale": "Mastery in 'Automata & Formal Languages' is 60.0% (< 65.0%). Unresolved weak concepts: NFA to DFA subset construction, Epsilon transitions.",
+      "preemptive_action": "Dispatched AI Tutor for targeted concept breakdown and prepared diagnostic practice.",
+      "status": "active",
+      "created_at": "2026-10-31T10:17:13.321784+00:00"
+    },
+    {
+      "id": "pred-001",
+      "target": "task_miss_risk",
+      "target_id": "T101",
+      "risk_score": 0.74,
+      "risk_level": "High",
+      "rationale": "Task T101 is scheduled following a 5-hour lecture day. Historical data indicates a 74% miss rate for high-cognitive tasks under high lecture load.",
+      "preemptive_action": "Deconstruct T101 into two 25-minute sub-sessions and relocate first sub-session to Tuesday 09:00 peak window.",
+      "status": "applied",
+      "created_at": "2026-10-31T09:42:51.134789+00:00"
+    },
+    {
+      "id": "pred-002",
+      "target": "topic_struggle_risk",
+      "target_id": "Automata & Formal Languages",
+      "risk_score": 0.81,
+      "risk_level": "High",
+      "rationale": "Mastery score in Automata is 58% (< 65% threshold). Pumping Lemma misconceptions persist across past 2 assessments.",
+      "preemptive_action": "Dispatched AI Tutor for remedial concept breakdown and generated 3 diagnostic check questions.",
+      "status": "applied",
+      "created_at": "2026-10-31T09:42:51.134789+00:00"
+    },
+    {
+      "id": "pred-003",
+      "target": "overload_risk",
+      "target_id": "Day: Monday",
+      "risk_score": 0.65,
+      "risk_level": "Medium",
+      "rationale": "Monday already has 5 lecture hours. Total planned study load exceeded 3 hours, leaving inadequate cognitive recovery.",
+      "preemptive_action": "Rescheduled secondary study blocks to Tuesday and Wednesday mornings.",
+      "status": "applied",
+      "created_at": "2026-10-31T09:42:51.134789+00:00"
+    }
+  ],
+  "assessments": [
+    {
+      "quiz_id": "quiz-c481fa24",
+      "topic": "Trend AI & LLM Systems",
+      "score": 3,
+      "total": 3,
+      "score_pct": 100.0,
+      "weak_topics": [],
+      "error_types": {},
+      "detailed_answers": [
+        {
+          "id": "q1",
+          "question": "In Retrieval-Augmented Generation (RAG), what is the key advantage of hybrid retrieval combining Dense Vector Search and Sparse BM25?",
+          "user_answer": "B",
+          "correct_answer": "B",
+          "is_correct": true,
+          "feedback": "Correct! Hybrid search blends semantic vector similarity with exact term matching, mitigating vector search's blindness to specific codes, names, or rare tokens.",
+          "concept": "Hybrid RAG Search"
+        },
+        {
+          "id": "q2",
+          "question": "What is the computational complexity of standard Scaled Dot-Product Attention with respect to sequence length N?",
+          "user_answer": "C",
+          "correct_answer": "C",
+          "is_correct": true,
+          "feedback": "Correct! Standard self-attention computes an N x N matrix comparing every token against every other token, resulting in quadratic O(N^2) time and memory complexity.",
+          "concept": "Attention Complexity"
+        },
+        {
+          "id": "q3",
+          "question": "What differentiates a truly Adaptive Multi-Agent system from a conventional pipeline planner?",
+          "user_answer": "B",
+          "correct_answer": "B",
+          "is_correct": true,
+          "feedback": "Correct! Conventional planners merely re-plan after a task is failed. An adaptive system observes behavior, updates a personal model, and preemptively restructures strategies.",
+          "concept": "Adaptive Behavioral Modeling"
+        }
+      ],
+      "feedback": "Diagnostic Complete: You scored 3/3 (100.0%). Excellent mastery demonstrated across all tested concepts!"
+    },
+    {
+      "quiz_id": "quiz-0ab8c682",
+      "topic": "Trend AI & LLM Systems",
+      "score": 1,
+      "total": 3,
+      "score_pct": 33.3,
+      "weak_topics": [
+        "Hybrid RAG Search",
+        "Attention Complexity"
+      ],
+      "error_types": {
+        "Conceptual Gap": 2
+      },
+      "detailed_answers": [
+        {
+          "id": "q1",
+          "question": "In Retrieval-Augmented Generation (RAG), what is the key advantage of hybrid retrieval combining Dense Vector Search and Sparse BM25?",
+          "user_answer": "C",
+          "correct_answer": "B",
+          "is_correct": false,
+          "feedback": "Incorrect. Correct answer is B: Dense search captures semantic intent while BM25 preserves exact keyword matches (e.g. acronyms, IDs). Hybrid search blends semantic vector similarity with exact term matching, mitigating vector search's blindness to specific codes, names, or rare tokens.",
+          "concept": "Hybrid RAG Search"
+        },
+        {
+          "id": "q2",
+          "question": "What is the computational complexity of standard Scaled Dot-Product Attention with respect to sequence length N?",
+          "user_answer": "A",
+          "correct_answer": "C",
+          "is_correct": false,
+          "feedback": "Incorrect. Correct answer is C: O(N^2). Standard self-attention computes an N x N matrix comparing every token against every other token, resulting in quadratic O(N^2) time and memory complexity.",
+          "concept": "Attention Complexity"
+        },
+        {
+          "id": "q3",
+          "question": "What differentiates a truly Adaptive Multi-Agent system from a conventional pipeline planner?",
+          "user_answer": "B",
+          "correct_answer": "B",
+          "is_correct": true,
+          "feedback": "Correct! Conventional planners merely re-plan after a task is failed. An adaptive system observes behavior, updates a personal model, and preemptively restructures strategies.",
+          "concept": "Adaptive Behavioral Modeling"
+        }
+      ],
+      "feedback": "Diagnostic Complete: You scored 1/3 (33.3%). Identified weak areas requiring revision: Hybrid RAG Search, Attention Complexity."
+    },
+    {
+      "quiz_id": "quiz-afbfea77",
+      "topic": "Automata & Formal Languages",
+      "score": 2,
+      "total": 4,
+      "score_pct": 50.0,
+      "weak_topics": [
+        "Pumping Lemma Proofs",
+        "State Minimization"
+      ],
+      "error_types": {
+        "Conceptual Gap": 1,
+        "Application Error": 1
+      },
+      "detailed_answers": [
+        {
+          "id": "q1",
+          "question": "For any Non-deterministic Finite Automaton (NFA) with N states, what is the maximum number of states in an equivalent Deterministic Finite Automaton (DFA) created via subset construction?",
+          "user_answer": "B",
+          "correct_answer": "B",
+          "is_correct": true,
+          "feedback": "Correct! Subset construction pairs each DFA state with a subset of NFA states. A set of N elements has exactly 2^N subsets, making 2^N the theoretical upper bound.",
+          "concept": "Subset Construction"
+        },
+        {
+          "id": "q2",
+          "question": "What is the primary role of an epsilon (ε) transition in an NFA?",
+          "user_answer": "B",
+          "correct_answer": "B",
+          "is_correct": true,
+          "feedback": "Correct! An epsilon transition enables the automaton to transition non-deterministically between states without reading any character from the input tape.",
+          "concept": "Epsilon Transitions"
+        },
+        {
+          "id": "q3",
+          "question": "The Pumping Lemma for Regular Languages is primarily used to:",
+          "user_answer": "C",
+          "correct_answer": "B",
+          "is_correct": false,
+          "feedback": "Incorrect. Correct answer is B: Prove that a language is NOT regular by contradiction. The Pumping Lemma is a necessary condition for regularity, so it cannot prove regularity directly; it is used via proof by contradiction to prove a language is not regular.",
+          "concept": "Pumping Lemma Proofs"
+        },
+        {
+          "id": "q4",
+          "question": "In the Table-Filling (Myhill-Nerode) algorithm for DFA minimization, two states p and q are distinguished if:",
+          "user_answer": "A",
+          "correct_answer": "B",
+          "is_correct": false,
+          "feedback": "Incorrect. Correct answer is B: One is an accept state and the other is a non-accept state. Any accept state and non-accept state are immediately distinguishable by the empty string ε because δ(p, ε) ∈ F while δ(q, ε) ∉ F.",
+          "concept": "State Minimization"
+        }
+      ],
+      "feedback": "Diagnostic Complete: You scored 2/4 (50.0%). Identified weak areas requiring revision: Pumping Lemma Proofs, State Minimization."
+    },
+    {
+      "quiz_id": "q-sample-1",
+      "topic": "Automata & Formal Languages",
+      "score": 3,
+      "total": 5,
+      "score_pct": 60.0,
+      "weak_topics": [
+        "NFA to DFA subset construction",
+        "Epsilon transitions"
+      ],
+      "error_types": {
+        "Conceptual Gap": 1,
+        "Application Error": 1
+      },
+      "timestamp": "2026-10-29T14:30:00"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "event_id": "ev-01",
+      "timestamp": "2026-10-29T10:00:00Z",
+      "source": "Planning Agent",
+      "type": "block_completed",
+      "payload": {
+        "planned_mins": 45,
+        "actual_focus_mins": 35
+      }
+    },
+    {
+      "id": 2,
+      "event_id": "ev-02",
+      "timestamp": "2026-10-29T14:30:00Z",
+      "source": "Assessment Agent",
+      "type": "quiz_result",
+      "payload": {
+        "topic": "Automata & Formal Languages",
+        "score_pct": 60.0,
+        "failed_concepts": [
+          "NFA to DFA subset construction",
+          "Epsilon transitions"
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "event_id": "ev-03",
+      "timestamp": "2026-10-30T17:00:00Z",
+      "source": "Goal Coach Agent",
+      "type": "reflection",
+      "payload": {
+        "energy": 3,
+        "mood": "tired"
+      }
+    },
+    {
+      "id": 4,
+      "event_id": "ev-0004",
+      "timestamp": "2026-10-31T10:17:13.310924+00:00",
+      "source": "Planning Agent",
+      "type": "block_completed",
+      "payload": {
+        "task_id": "T101",
+        "status": "completed",
+        "planned_mins": 45,
+        "actual_focus_mins": 35,
+        "topic": "Automata & Formal Languages"
+      }
+    },
+    {
+      "id": 5,
+      "event_id": "ev-0005",
+      "timestamp": "2026-10-31T10:17:15.014770+00:00",
+      "source": "Planning Agent",
+      "type": "block_completed",
+      "payload": {
+        "task_id": "T101",
+        "status": "completed",
+        "planned_mins": 45,
+        "actual_focus_mins": 35,
+        "topic": "Automata & Formal Languages"
+      }
+    },
+    {
+      "id": 6,
+      "event_id": "ev-0006",
+      "timestamp": "2026-10-31T10:17:41.795488+00:00",
+      "source": "Assessment Agent",
+      "type": "quiz_result",
+      "payload": {
+        "topic": "Automata & Formal Languages",
+        "score_pct": 50.0,
+        "failed_concepts": [
+          "Pumping Lemma Proofs",
+          "State Minimization"
+        ],
+        "error_types": {
+          "Conceptual Gap": 1,
+          "Application Error": 1
+        },
+        "score": 2,
+        "total": 4
+      }
+    },
+    {
+      "id": 7,
+      "event_id": "ev-0007",
+      "timestamp": "2026-10-31T10:18:33.719323+00:00",
+      "source": "Planning Agent",
+      "type": "schedule_optimized",
+      "payload": {
+        "date": "2026-10-31",
+        "blocks_count": 2,
+        "unplaced_count": 0
+      }
+    },
+    {
+      "id": 8,
+      "event_id": "ev-0008",
+      "timestamp": "2026-10-31T10:18:47.099297+00:00",
+      "source": "Planning Agent",
+      "type": "block_completed",
+      "payload": {
+        "task_id": "T101",
+        "status": "completed",
+        "planned_mins": 45,
+        "actual_focus_mins": 35,
+        "topic": "Automata & Formal Languages"
+      }
+    },
+    {
+      "id": 9,
+      "event_id": "ev-0009",
+      "timestamp": "2026-10-31T11:43:12.749811+00:00",
+      "source": "Simulation Lab",
+      "type": "block_cut_short",
+      "payload": {
+        "planned_mins": 60,
+        "actual_focus_mins": 15,
+        "day_type": "heavy_lecture",
+        "reason": "Exhaustion after back-to-back classes"
+      }
+    },
+    {
+      "id": 10,
+      "event_id": "ev-0010",
+      "timestamp": "2026-10-31T11:43:16.726492+00:00",
+      "source": "Assessment Agent",
+      "type": "quiz_result",
+      "payload": {
+        "topic": "Automata & Formal Languages",
+        "score_pct": 40.0,
+        "failed_concepts": [
+          "Pumping Lemma proofs",
+          "NFA epsilon transitions"
+        ],
+        "error_types": {
+          "Conceptual Gap": 3
+        }
+      }
+    },
+    {
+      "id": 11,
+      "event_id": "ev-0011",
+      "timestamp": "2026-10-31T11:43:59.319765+00:00",
+      "source": "Planning Agent",
+      "type": "task_created",
+      "payload": {
+        "task_id": "T104",
+        "title": "learn"
+      }
+    },
+    {
+      "id": 12,
+      "event_id": "ev-0012",
+      "timestamp": "2026-10-31T11:44:02.270179+00:00",
+      "source": "Planning Agent",
+      "type": "block_completed",
+      "payload": {
+        "task_id": "T101",
+        "status": "completed",
+        "planned_mins": 45,
+        "actual_focus_mins": 35,
+        "topic": "Automata & Formal Languages"
+      }
+    },
+    {
+      "id": 13,
+      "event_id": "ev-0013",
+      "timestamp": "2026-10-31T11:44:03.975129+00:00",
+      "source": "Planning Agent",
+      "type": "block_completed",
+      "payload": {
+        "task_id": "T104",
+        "status": "completed",
+        "planned_mins": 45,
+        "actual_focus_mins": 35,
+        "topic": "Automata & Formal Languages"
+      }
+    },
+    {
+      "id": 14,
+      "event_id": "ev-0014",
+      "timestamp": "2026-10-31T11:44:27.038241+00:00",
+      "source": "Assessment Agent",
+      "type": "quiz_result",
+      "payload": {
+        "topic": "Trend AI & LLM Systems",
+        "score_pct": 33.3,
+        "failed_concepts": [
+          "Hybrid RAG Search",
+          "Attention Complexity"
+        ],
+        "error_types": {
+          "Conceptual Gap": 2
+        },
+        "score": 1,
+        "total": 3
+      }
+    },
+    {
+      "id": 15,
+      "event_id": "ev-0015",
+      "timestamp": "2026-10-31T11:44:57.499615+00:00",
+      "source": "Assessment Agent",
+      "type": "quiz_result",
+      "payload": {
+        "topic": "Trend AI & LLM Systems",
+        "score_pct": 100.0,
+        "failed_concepts": [],
+        "error_types": {},
+        "score": 3,
+        "total": 3
+      }
+    },
+    {
+      "id": 16,
+      "event_id": "ev-0016",
+      "timestamp": "2026-11-01T04:45:04.773447+00:00",
+      "source": "Assessment Agent",
+      "type": "quiz_result",
+      "payload": {
+        "topic": "Automata & Formal Languages",
+        "score_pct": 40.0,
+        "failed_concepts": [
+          "Pumping Lemma proofs",
+          "NFA epsilon transitions"
+        ],
+        "error_types": {
+          "Conceptual Gap": 3
+        }
+      }
+    }
+  ],
+  "courses": [
+    {
+      "id": "course-automata",
+      "name": "Theory of Automata & Formal Languages",
+      "code": "AI412",
+      "instructor": "Dr. Ahmed Zakzouk",
+      "description": "Formal languages, DFA, NFA, Context-Free Grammars, and Turing Machines.",
+      "materials": [
+        {
+          "id": "mat-automata-1.pdf",
+          "title": "Automata 1",
+          "filename": "Automata 1.pdf.pdf",
+          "path": "E:\\Road Masr proj\\material\\Automata 1.pdf.pdf",
+          "pages": 14,
+          "size_kb": 1295.9,
+          "uploaded_at": "2026-11-01T04:42:35.351563+00:00"
+        },
+        {
+          "id": "mat-automata-2.pdf",
+          "title": "Automata 2",
+          "filename": "Automata 2.pdf.pdf",
+          "path": "E:\\Road Masr proj\\material\\Automata 2.pdf.pdf",
+          "pages": 7,
+          "size_kb": 452.3,
+          "uploaded_at": "2026-11-01T04:42:35.468294+00:00"
+        }
+      ]
+    },
+    {
+      "id": "course-trend-ai",
+      "name": "Trend AI & Modern Deep Learning",
+      "code": "AI415",
+      "instructor": "Dr. Tarek & Department Faculty",
+      "description": "Transformers, LLM architectures, RAG systems, and AI Agents.",
+      "materials": [
+        {
+          "id": "mat-trend-ai-1.pdf",
+          "title": "Trend AI 1",
+          "filename": "Trend AI 1.pdf.pdf",
+          "path": "E:\\Road Masr proj\\material\\Trend AI 1.pdf.pdf",
+          "pages": 14,
+          "size_kb": 695.9,
+          "uploaded_at": "2026-11-01T04:42:35.479021+00:00"
+        },
+        {
+          "id": "mat-trend-ai-2.pdf",
+          "title": "Trend AI 2",
+          "filename": "Trend AI 2.pdf.pdf",
+          "path": "E:\\Road Masr proj\\material\\Trend AI 2.pdf.pdf",
+          "pages": 27,
+          "size_kb": 1604.7,
+          "uploaded_at": "2026-11-01T04:42:35.491621+00:00"
+        }
+      ]
+    }
+  ]
+}

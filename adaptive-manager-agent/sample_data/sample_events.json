@@ -1,0 +1,8 @@
+[
+  {"event_id":"evt-001","timestamp":"2026-10-19T09:00:00+02:00","source":"planning","type":"block_cut_short","topic":"Math","day_type":"heavy_lecture","planned_mins":45,"actual_focus_mins":22},
+  {"event_id":"evt-002","timestamp":"2026-10-19T14:00:00+02:00","source":"planning","type":"block_missed","topic":"Math","day_type":"heavy_lecture","planned_mins":45},
+  {"event_id":"evt-003","timestamp":"2026-10-19T21:00:00+02:00","source":"coach","type":"reflection","energy":2,"procrastination_risk":0.70},
+  {"event_id":"evt-004","timestamp":"2026-10-20T20:00:00+02:00","source":"assessment","type":"quiz_result","topic":"Automata","score_pct":50,"failed_concepts":["DFA minimization","Pumping lemma"]},
+  {"event_id":"evt-005","timestamp":"2026-10-20T21:00:00+02:00","source":"coach","type":"reflection","energy":2,"procrastination_risk":0.90},
+  {"event_id":"evt-006","timestamp":"2026-10-22T00:00:00+02:00","source":"planning","type":"upcoming_load","lecture_hours":6,"exam":"Automata"}
+]
