@@ -1,0 +1,17 @@
+{
+  "dataset_version": 1,
+  "labeling": "Relevant source filenames and physical PDF page numbers were selected from extracted sample-material text before running this benchmark. Negative queries have no expected supporting source in the bundled material.",
+  "queries": [
+    {"id":"hc01","category":"why / causal","query":"Why was the Nile River important to the development of ancient Egyptian civilization?","expected_sources":[{"source_filename":"Ancient_Egypt_From.pdf","pages":[16,17]}]},
+    {"id":"hc02","category":"paraphrase / how","query":"How did the annual river cycle help Egyptian farmers grow crops?","expected_sources":[{"source_filename":"Ancient_Egypt_From.pdf","pages":[16,17]}]},
+    {"id":"hc03","category":"rare exact terms","query":"How were papyrus stems processed into a writing material?","expected_sources":[{"source_filename":"Ancient_Egypt_From.pdf","pages":[10]}]},
+    {"id":"hc04","category":"definition","query":"What was the original meaning of the title pharaoh?","expected_sources":[{"source_filename":"Ancient_Egypt_From.pdf","pages":[10]}]},
+    {"id":"hc05","category":"descriptive","query":"What shape and building materials characterized the Step Pyramid built for Djoser?","expected_sources":[{"source_filename":"Ancient_Egypt_From.pdf","pages":[40]}]},
+    {"id":"hc06","category":"definition / multi-concept","query":"Define the French Revolution and state when it began and what political order it challenged.","expected_sources":[{"source_filename":"history_rag_grounding_material.pdf","pages":[1]}]},
+    {"id":"hc07","category":"exact factual","query":"What happened at the Bastille on 14 July 1789?","expected_sources":[{"source_filename":"history_rag_grounding_material.pdf","pages":[1]}]},
+    {"id":"hc08","category":"paraphrase / how","query":"How were the three social groups represented in the Estates-General?","expected_sources":[{"source_filename":"history_rag_grounding_material.pdf","pages":[1]}]},
+    {"id":"hc09","category":"multi-concept","query":"Which principles did the Declaration of the Rights of Man and of the Citizen state?","expected_sources":[{"source_filename":"history_rag_grounding_material.pdf","pages":[1]}]},
+    {"id":"hc10","category":"irrelevant","query":"How does quantum teleportation work?","expected_sources":[]},
+    {"id":"hc11","category":"negative definition / decoy","query":"What are the formal axioms that define linear independence?","expected_sources":[]}
+  ]
+}

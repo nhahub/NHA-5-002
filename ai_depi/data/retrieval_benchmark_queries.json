@@ -1,0 +1,33 @@
+{
+  "dataset_version": 1,
+  "source": "sample_data/Ancient_Egypt_From.pdf",
+  "page_numbering": "1-based physical PDF page numbers, matching Chroma metadata page_number",
+  "label_method": "Manually selected from direct inspection of extracted PDF page text before any benchmark retrieval was run. Every chunk stored from a labeled page is relevant for that query.",
+  "queries": [
+    {"id":"q01","category":"direct factual","query":"What geographic feature made settled life in ancient Egypt possible?","relevant_pages":[16]},
+    {"id":"q02","category":"paraphrase","query":"How did the annual river cycle help Egyptian farmers grow crops?","relevant_pages":[16,17]},
+    {"id":"q03","category":"direct factual","query":"Which cereal crops were central to ancient Egyptian agriculture?","relevant_pages":[17]},
+    {"id":"q04","category":"conceptual","query":"Why could Egypt produce and store a surplus from one harvest each year?","relevant_pages":[17]},
+    {"id":"q05","category":"topic based","query":"How did the Nile Delta differ from the Nile Valley geographically?","relevant_pages":[16]},
+    {"id":"q06","category":"related concepts","query":"What was papyrus used for besides making a writing surface?","relevant_pages":[10,18]},
+    {"id":"q07","category":"direct factual","query":"What was the original meaning of the title pharaoh?","relevant_pages":[10]},
+    {"id":"q08","category":"paraphrase","query":"How were hieroglyphic and hieratic writing used differently?","relevant_pages":[12,22]},
+    {"id":"q09","category":"direct factual","query":"What did Hatshepsut do to establish herself as ruler?","relevant_pages":[11,62,63]},
+    {"id":"q10","category":"topic based","query":"How did Cleopatra come to power and maintain influence?","relevant_pages":[11,95,96]},
+    {"id":"q11","category":"related concepts","query":"What did the Rosetta Stone contribute to understanding ancient Egyptian writing?","relevant_pages":[13,29,94,148]},
+    {"id":"q12","category":"direct factual","query":"Where was the Rosetta Stone found, and when was it discovered?","relevant_pages":[148]},
+    {"id":"q13","category":"conceptual","query":"What role did the king have in maintaining order between people and the gods?","relevant_pages":[20,119]},
+    {"id":"q14","category":"topic based","query":"What evidence describes the crops and farming economy along the Nile?","relevant_pages":[17,18,19]},
+    {"id":"q15","category":"direct factual","query":"What shape and materials characterized the Step Pyramid built for Djoser?","relevant_pages":[40]},
+    {"id":"q16","category":"topic based","query":"What are the Great Sphinx's size, form, and building material?","relevant_pages":[48]},
+    {"id":"q17","category":"related concepts","query":"How did ancient Egyptians represent the weighing of a dead person's heart?","relevant_pages":[120]},
+    {"id":"q18","category":"conceptual","query":"What kinds of religious beliefs and practices existed in ancient Egypt?","relevant_pages":[115,116,126,127]},
+    {"id":"q19","category":"paraphrase","query":"Which animal-headed creature threatened the sun god during his daily journey?","relevant_pages":[123]},
+    {"id":"q20","category":"direct factual","query":"What does the book say about the origins of Egyptian mummification practices?","relevant_pages":[130,131]},
+    {"id":"q21","category":"topic based","query":"What are the differences between hieroglyphic, hieratic, and demotic scripts?","relevant_pages":[22,135,146,147]},
+    {"id":"q22","category":"direct factual","query":"Which language family does ancient Egyptian belong to?","relevant_pages":[29,134]},
+    {"id":"q23","category":"specific page fact","query":"How were papyrus stems processed into a writing material?","relevant_pages":[10]},
+    {"id":"q24","category":"related concepts","query":"How were Upper and Lower Egypt represented by crowns?","relevant_pages":[56]},
+    {"id":"q25","category":"topic based","query":"What did Queen Hatshepsut's funerary temple at Dayr al-Bahri look like?","relevant_pages":[161]}
+  ]
+}
