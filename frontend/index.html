@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مساحة مذاكرتي</title>
+  <link rel="stylesheet" href="/static/css/style.css">
+  <!-- Lucide Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lucide-static@0.460.0/font/lucide.min.css">
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="lucide-brain-circuit" style="color:#fff;"></i>
+      </div>
+      <div class="brand-info">
+        <h1>مساحة مذاكرتي</h1>
+        <span>تعلمك في مكان واحد</span>
+      </div>
+    </div>
+
+    <ul class="nav-links">
+      <li class="nav-item active" data-tab="tab-dashboard">
+        <i class="lucide-layout-dashboard"></i>
+        <span>الرئيسية</span>
+      </li>
+      <li class="nav-item" data-tab="tab-courses"><i class="lucide-book"></i><span>موادّي</span></li>
+      <li class="nav-item" data-tab="tab-model">
+        <i class="lucide-activity"></i>
+        <span>تقدمي</span>
+      </li>
+      <li class="nav-item" data-tab="tab-planner">
+        <i class="lucide-calendar"></i>
+        <span>خطة المذاكرة</span>
+      </li>
+      <li class="nav-item" data-tab="tab-tutor">
+        <i class="lucide-book-open"></i>
+        <span>اسأل المساعد</span>
+      </li>
+      <li class="nav-item" data-tab="tab-assessment">
+        <i class="lucide-clipboard-check"></i>
+        <span>الاختبارات</span>
+      </li>
+      <li class="nav-item" data-tab="tab-goals">
+        <i class="lucide-target"></i>
+        <span>أهدافي</span>
+      </li>
+      <li class="nav-item" data-tab="tab-simulation">
+        <i class="lucide-flask-conical"></i>
+        <span>المحاكاة</span>
+      </li>
+    </ul>
+
+    <!-- System Strategy Mode Status Box -->
+    <div class="system-status-box">
+      <div class="status-header">
+        <span>System Strategy</span>
+        <div class="status-badge restructure" id="system-mode-badge">PREEMPTIVE</div>
+      </div>
+      <div style="font-size:11px; color:var(--text-muted); line-height:1.4;">
+        Multi-agent closed loop is observing behavior and anticipating cognitive friction.
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main-wrapper">
+    
+    <!-- Top Bar -->
+    <header class="top-bar">
+      <div class="page-title">
+      <h2 id="view-title">الرئيسية</h2>
+      <p>مساحة منظمة لموادك ومذاكرتك</p>
+      </div>
+
+      <div class="top-actions">
+        <div class="badge badge-accent" id="topbar-streak" style="padding:8px 14px; font-size:13px; display:none;"></div>
+
+        <div class="user-profile-pill">
+          <div class="user-avatar">AM</div>
+          <div class="user-meta">
+            <div class="name">طالب</div>
+            <div class="role"></div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ====================================================================
+         TAB 1: DASHBOARD
+         ==================================================================== -->
+    <section class="tab-content active" id="tab-dashboard">
+      <div class="welcome-card" id="dashboard-welcome"><span class="eyebrow">مساحة مذاكرتك</span><h3>ابدأ من هنا</h3><p>أضف مادة وارفع محاضراتك، وبعدها جهّز اختبارًا شاملًا أو خطتك.</p><button class="btn btn-primary" onclick="switchTab('tab-courses')">إضافة مادة</button></div>
+      
+      <!-- Core USP Alert: Active Struggle Predictions -->
+      <div class="card" style="margin-bottom:24px; border-color:var(--border-color-strong);">
+        <div class="card-header">
+          <div class="card-title">
+            <i class="lucide-sparkles"></i>
+            Active AI Struggle Predictions (Preemptive Interventions)
+          </div>
+          <span class="badge badge-accent">Core USP Innovation</span>
+        </div>
+        <div id="dashboard-predictions">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+
+      <!-- High-level Metric Cards -->
+      <div class="grid-cards">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title"><i class="lucide-clock"></i> Focus Capacity</span>
+            <span class="badge badge-accent">Observed</span>
+          </div>
+          <div class="metric-large" id="dash-focus-mins">35m</div>
+          <div class="metric-sub">Attention threshold before cognitive fatigue</div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title"><i class="lucide-hourglass"></i> Task Delay Factor</span>
+            <span class="badge badge-warning">Bias 1.3x</span>
+          </div>
+          <div class="metric-large" id="dash-delay-factor">1.30x</div>
+          <div class="metric-sub">Estimation correction applied to study tasks</div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title"><i class="lucide-sun"></i> Peak Productivity</span>
+            <span class="badge badge-success">High Energy</span>
+          </div>
+          <div class="metric-large" id="dash-peak-window" style="font-size:24px;">09:00 - 11:00</div>
+          <div class="metric-sub">Reserved for heavy conceptual topics</div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title"><i class="lucide-heart-pulse"></i> Burnout Risk</span>
+            <span id="dash-burnout-risk" class="badge badge-medium">Medium</span>
+          </div>
+          <div class="metric-large" style="font-size:22px; color:var(--warning);">Recovery Shield</div>
+          <div class="metric-sub">Derived from lecture loads and reflections</div>
+        </div>
+      </div>
+
+      <!-- Today's Agenda & Quick Actions -->
+      <div style="display:grid; grid-template-columns: 2fr 1fr; gap:24px;">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title"><i class="lucide-list-todo"></i> Priority Agenda & Tasks</span>
+            <button class="btn btn-primary btn-sm" onclick="triggerScheduleOptimization()">
+              <i class="lucide-wand-2"></i> Re-Optimize Plan
+            </button>
+          </div>
+          <div id="dashboard-today-tasks">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title"><i class="lucide-zap"></i> Quick Multi-Agent Actions</span>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <button class="btn btn-primary" onclick="switchTab('tab-assessment'); startDiagnosticQuiz();">
+              <i class="lucide-clipboard-check"></i> Take Diagnostic Quiz
+            </button>
+            <button class="btn btn-secondary" onclick="switchTab('tab-tutor')">
+              <i class="lucide-messages-square"></i> Ask Grounded AI Tutor
+            </button>
+            <button class="btn btn-secondary" onclick="openModal('reflection-modal')">
+              <i class="lucide-smile"></i> Daily Evening Reflection
+            </button>
+            <button class="btn btn-outline" onclick="openModal('add-task-modal')">
+              <i class="lucide-plus"></i> Add New Study Task
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="tab-content" id="tab-courses">
+      <div class="page-intro"><h3>موادّي</h3><p>أنشئ مادة وارفع محاضراتها وملفاتها.</p></div>
+      <div class="card course-create"><form id="course-create-form"><input id="course-name-input" class="form-control" placeholder="اسم المادة" required><button class="btn btn-primary">إضافة مادة</button></form></div>
+      <div id="courses-list" class="courses-grid"></div>
+    </section>
+
+    <!-- ====================================================================
+         TAB 2: MY ADAPTIVE MODEL (THE CORE USP)
+         ==================================================================== -->
+    <section class="tab-content" id="tab-model">
+      
+      <div class="card" style="margin-bottom:24px; border-color:var(--accent-primary);">
+        <div class="card-header">
+          <div>
+            <div class="card-title"><i class="lucide-brain"></i> What the System Has Learned About You</div>
+            <p style="font-size:13px; color:var(--text-muted); margin-top:4px;">
+              The Personal Adaptive Model is the core innovation of the platform. Unlike static planners, 
+              the system builds a continuous mathematical behavioral profile of how you study, predict friction, and adapt strategy.
+            </p>
+          </div>
+          <button class="btn btn-secondary btn-sm" onclick="openModal('calibrate-modal')">
+            <i class="lucide-sliders"></i> Calibrate Parameters
+          </button>
+        </div>
+
+        <div class="grid-cards" style="margin-top:20px;">
+          <div style="background:rgba(255,255,255,0.02); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+            <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase;">Peak Window</div>
+            <div style="font-size:20px; font-weight:700; color:#fff; margin-top:4px;" id="model-peak-window">09:00 - 11:00</div>
+            <div style="font-size:11px; color:var(--accent-primary); margin-top:4px;">Confidence: 85% (14 sessions)</div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.02); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+            <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase;">Effective Focus Capacity</div>
+            <div style="font-size:20px; font-weight:700; color:#fff; margin-top:4px;" id="model-focus-duration">35 mins</div>
+            <div style="font-size:11px; color:var(--accent-primary); margin-top:4px;">Confidence: 82% (Early stops evaluated)</div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.02); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+            <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase;">Estimation Bias (Delay)</div>
+            <div style="font-size:20px; font-weight:700; color:#fff; margin-top:4px;" id="model-delay-factor">1.30x</div>
+            <div style="font-size:11px; color:var(--warning); margin-top:4px;">Tasks take 30% longer than planned</div>
+          </div>
+
+          <div style="background:rgba(255,255,255,0.02); padding:16px; border-radius:var(--radius-sm); border:1px solid var(--border-color);">
+            <div style="font-size:12px; color:var(--text-muted); text-transform:uppercase;">Learning Velocity</div>
+            <div style="font-size:20px; font-weight:700; color:#fff; margin-top:4px;" id="model-learning-velocity">68%</div>
+            <div style="font-size:11px; color:var(--success); margin-top:4px;">Velocity gain measured across quizzes</div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:24px; margin-top:24px;">
+          <!-- Procrastination Patterns -->
+          <div>
+            <h4 style="font-size:14px; color:#fff; margin-bottom:10px;">Detected Procrastination Triggers</h4>
+            <div class="tag-list" id="model-triggers-list">
+              <!-- Populated by app.js -->
+            </div>
+          </div>
+
+          <!-- Strategy Mode Details -->
+          <div>
+            <h4 style="font-size:14px; color:#fff; margin-bottom:10px;">Current Operational Strategy</h4>
+            <div style="background:rgba(99,102,241,0.08); border:1px solid var(--border-color-strong); padding:14px; border-radius:var(--radius-sm);">
+              <div style="font-size:14px; font-weight:700; color:var(--accent-primary);" id="model-system-mode">PREEMPTIVE RESTRUCTURE</div>
+              <p style="font-size:12px; color:var(--text-muted); margin-top:4px;">
+                The system proactively breaks down large monolithic tasks and reschedules them to morning windows with fatigue protection buffers.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Topic Mastery & Weakness Breakdown -->
+        <div style="margin-top:30px;">
+          <h4 style="font-size:15px; color:#fff; margin-bottom:14px;">Subject Knowledge Mastery & Diagnostic Insights</h4>
+          <div id="model-mastery-list">
+            <!-- Populated by app.js -->
+          </div>
+
+          <div style="margin-top:16px;">
+            <div style="font-size:13px; font-weight:600; color:var(--text-dim); text-transform:uppercase; margin-bottom:8px;">
+              Current Knowledge Gaps Under Active Remediation:
+            </div>
+            <div class="tag-list" id="model-weak-topics">
+              <!-- Populated by app.js -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ====================================================================
+         TAB 3: SMART PLANNER & CALENDAR
+         ==================================================================== -->
+    <section class="tab-content" id="tab-planner">
+      
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <div>
+          <h3 style="color:#fff; font-size:18px;">Dynamic Schedule & Calendar Optimization</h3>
+          <p style="font-size:13px; color:var(--text-muted);">
+            Translates courses, fixed deadlines, and your Personal Adaptive Model into a conflict-free execution timetable.
+          </p>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <button class="btn btn-secondary" onclick="openModal('add-task-modal')">
+            <i class="lucide-plus"></i> Add Task
+          </button>
+          <button class="btn btn-primary" onclick="triggerScheduleOptimization()">
+            <i class="lucide-sparkles"></i> Optimize Schedule
+          </button>
+        </div>
+      </div>
+
+      <!-- Schedule Grid -->
+      <div style="display:grid; grid-template-columns: 1fr 1.5fr; gap:24px; margin-bottom:24px;">
+        <!-- University Fixed Lectures -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title"><i class="lucide-landmark"></i> Fixed University Lectures</span>
+            <span class="badge badge-accent">Unmovable</span>
+          </div>
+          <div id="planner-lectures-list">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+
+        <!-- AI Scheduled Study Blocks -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title"><i class="lucide-calendar-check"></i> AI-Optimized Study Blocks</span>
+            <span class="badge badge-success">Peak Aligned</span>
+          </div>
+          <div id="planner-blocks-list">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Study Tasks Table -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title"><i class="lucide-layers"></i> Actionable Tasks & Deconstructed Micro-Tasks</span>
+        </div>
+        <table style="width:100%; border-collapse:collapse; text-align:left; font-size:13px;">
+          <thead>
+            <tr style="border-bottom:1px solid var(--border-color); color:var(--text-dim); text-transform:uppercase; font-size:11px;">
+              <th style="padding:10px 12px;">Task</th>
+              <th style="padding:10px 12px;">Duration</th>
+              <th style="padding:10px 12px;">Load</th>
+              <th style="padding:10px 12px;">Status</th>
+              <th style="padding:10px 12px;">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="planner-tasks-table">
+            <!-- Populated by app.js -->
+          </tbody>
+        </table>
+      </div>
+
+    </section>
+
+    <!-- ====================================================================
+         TAB 4: AI STUDY ROOM & TUTOR (ai_depi RAG)
+         ==================================================================== -->
+    <section class="tab-content" id="tab-tutor">
+      
+      <div class="card" style="margin-bottom:24px;">
+        <div class="card-header">
+          <div>
+            <div class="card-title"><i class="lucide-sparkles"></i> Grounded AI Tutor & Course Knowledge Base</div>
+            <p style="font-size:13px; color:var(--text-muted); margin-top:4px;">
+              Retrieves authoritative lecture excerpts (PDFs/notes) to answer questions, generate level-tailored explanations, and reinforce weak concepts.
+            </p>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <select class="form-control" id="tutor-material-select" style="width:auto;">
+              <option value="">All Course Materials</option>
+            </select>
+            <button class="btn btn-secondary btn-sm" onclick="generateExplanation()">
+              <i class="lucide-lightbulb"></i> Explain Concept
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="loadFlashcards()">
+              <i class="lucide-layers"></i> Flashcards
+            </button>
+          </div>
+        </div>
+
+        <!-- Chat Output Box -->
+        <div id="tutor-chat-output" style="height:350px; overflow-y:auto; padding:16px; background:rgba(0,0,0,0.25); border-radius:var(--radius-sm); border:1px solid var(--border-color); margin-bottom:16px;">
+          <div style="color:var(--text-muted); font-size:13px; text-align:center; padding-top:120px;">
+            <i class="lucide-bot" style="font-size:28px; color:var(--accent-primary);"></i>
+            <p style="margin-top:8px;">Ask the AI Tutor any question about Automata, AI Trends, or lecture proofs.</p>
+          </div>
+        </div>
+
+        <!-- Chat Input Bar -->
+        <div style="display:flex; gap:10px;">
+          <input type="text" class="form-control" id="tutor-chat-input" placeholder="Ask about state minimization, pumping lemma, RAG architectures..." />
+          <button class="btn btn-primary" onclick="sendTutorQuery()">
+            <i class="lucide-send"></i> Send
+          </button>
+        </div>
+      </div>
+
+      <!-- Flashcards Carousel Section -->
+      <div id="flashcard-section" style="display:none;" class="card">
+        <div class="card-header">
+          <div class="card-title"><i class="lucide-layers"></i> Active Recall Flashcards</div>
+          <span id="flashcard-counter" class="badge badge-accent">1 of 5</span>
+        </div>
+        
+        <div class="flashcard-box" id="flashcard-box" onclick="flipCurrentCard()">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <span class="badge badge-accent" style="margin-bottom:12px;">Concept / Question</span>
+              <h3 id="flashcard-front-text" style="color:#fff; font-size:18px;">Flashcard Question</h3>
+              <div class="card-hint">Click card to reveal answer</div>
+            </div>
+            <div class="flashcard-back">
+              <span class="badge badge-success" style="margin-bottom:12px;">Grounded Explanation</span>
+              <p id="flashcard-back-text" style="font-size:15px; line-height:1.6;">Explanation</p>
+              <div class="card-hint">Click card to flip back</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:center; gap:14px; margin-top:10px;">
+          <button class="btn btn-secondary" onclick="prevFlashcard()">Previous</button>
+          <button class="btn btn-primary" onclick="nextFlashcard()">Next Card</button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====================================================================
+         TAB 5: DIAGNOSTICS & QUIZZES (Abdelrahman Quiz Agent)
+         ==================================================================== -->
+    <section class="tab-content" id="tab-assessment">
+      
+      <div class="card" style="margin-bottom:24px;">
+        <div class="card-header">
+          <div>
+            <div class="card-title"><i class="lucide-clipboard-check"></i> Diagnostic Assessment Center</div>
+            <p style="font-size:13px; color:var(--text-muted); margin-top:4px;">
+              Autonomous evaluation pipeline. Generates grounded MCQs, isolates exact misconceptions, and feeds results directly back into the Personal Adaptive Model.
+            </p>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <select class="form-control" id="quiz-topic-select" style="width:auto;"><option value="">اختر المادة</option></select>
+            <select class="form-control" id="quiz-lecture-select" style="width:auto;"><option value="">كل محاضرات المادة</option></select>
+            <button class="btn btn-primary" onclick="startDiagnosticQuiz()">
+              <i class="lucide-play"></i> ابدأ اختبار شامل
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Quiz Container -->
+      <div id="active-quiz-container" style="display:none;"></div>
+
+      <!-- Diagnostic Report Container -->
+      <div id="quiz-report-container" style="display:none;"></div>
+
+    </section>
+
+    <!-- ====================================================================
+         TAB 6: GOALS & LIFE COACH (Accountability & Gamification)
+         ==================================================================== -->
+    <section class="tab-content" id="tab-goals">
+      
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <div>
+          <h3 style="color:#fff; font-size:18px;">Long-Term Goal Alignment & Behavioral Accountability</h3>
+          <p style="font-size:13px; color:var(--text-muted);">
+            Sustains motivation, tracks habits with streak freeze protection, and drives daily reflection check-ins.
+          </p>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <button class="btn btn-primary" onclick="openModal('reflection-modal')">
+            <i class="lucide-smile"></i> Daily Evening Reflection
+          </button>
+        </div>
+      </div>
+
+      <div style="display:grid; grid-template-columns: 2fr 1fr; gap:24px;">
+        <!-- Goals & Milestones -->
+        <div>
+          <div id="goals-cards-list">
+            <!-- Populated by app.js -->
+          </div>
+        </div>
+
+        <!-- Habits, Streak Freeze & Gamification Showcase -->
+        <div>
+          <div class="card" style="margin-bottom:20px;">
+            <div class="card-header">
+              <span class="card-title"><i class="lucide-flame"></i> Daily Habits & Freezes</span>
+            </div>
+            <div id="habits-cards-list">
+              <!-- Populated by app.js -->
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title"><i class="lucide-award"></i> Earned Milestone Badges</span>
+            </div>
+            <div id="achievements-badges-list">
+              <!-- Populated by app.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ====================================================================
+         TAB 7: SIMULATION & SCENARIO LAB (Evaluation & Demo)
+         ==================================================================== -->
+    <section class="tab-content" id="tab-simulation">
+      
+      <div class="card" style="margin-bottom:24px; border-color:var(--accent-primary);">
+        <div class="card-header">
+          <div>
+            <div class="card-title"><i class="lucide-flask-conical"></i> Interactive Simulation Lab</div>
+            <p style="font-size:13px; color:var(--text-muted); margin-top:4px;">
+              Demonstrate the Core USP live! Test how the system detects behavioral friction, updates the Personal Model, predicts issues, and adapts strategies in real time.
+            </p>
+          </div>
+          <span class="badge badge-accent">Live USP Validator</span>
+        </div>
+
+        <div class="grid-cards" style="margin-top:20px;">
+          <!-- Scenario 1 -->
+          <div class="card" style="background:rgba(255,255,255,0.02);">
+            <div style="font-weight:700; color:#fff; font-size:15px; margin-bottom:6px;">1. Heavy Lecture Fatigue</div>
+            <p style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">
+              Simulates a student attempting a 60m complex proof after 5 lecture hours and cutting it short after 15m.
+            </p>
+            <button class="btn btn-secondary btn-sm" onclick="triggerScenario('heavy_lecture_stress')">
+              Run Scenario
+            </button>
+          </div>
+
+          <!-- Scenario 2 -->
+          <div class="card" style="background:rgba(255,255,255,0.02);">
+            <div style="font-weight:700; color:#fff; font-size:15px; margin-bottom:6px;">2. Automata Quiz Failure</div>
+            <p style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">
+              Simulates scoring 40% on Pumping Lemma proofs. Drops topic mastery and triggers remedial study interventions.
+            </p>
+            <button class="btn btn-secondary btn-sm" onclick="triggerScenario('failed_quiz_automata')">
+              Run Scenario
+            </button>
+          </div>
+
+          <!-- Scenario 3 -->
+          <div class="card" style="background:rgba(255,255,255,0.02);">
+            <div style="font-weight:700; color:#fff; font-size:15px; margin-bottom:6px;">3. Streak Freeze Protection</div>
+            <p style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">
+              Simulates missing yesterday's habit. Consumes a freeze shield to protect the streak from resetting to zero.
+            </p>
+            <button class="btn btn-secondary btn-sm" onclick="triggerScenario('streak_comeback')">
+              Run Scenario
+            </button>
+          </div>
+
+          <!-- Scenario 4 -->
+          <div class="card" style="background:rgba(255,255,255,0.02);">
+            <div style="font-weight:700; color:#fff; font-size:15px; margin-bottom:6px;">4. Peak Morning Focus</div>
+            <p style="font-size:12px; color:var(--text-muted); margin-bottom:14px;">
+              Simulates 40m unbroken focus during 09:00-11:00 peak window, reinforcing productivity confidence.
+            </p>
+            <button class="btn btn-secondary btn-sm" onclick="triggerScenario('ideal_morning_focus')">
+              Run Scenario
+            </button>
+          </div>
+        </div>
+
+        <!-- Simulation Live Log Output -->
+        <div style="margin-top:24px;">
+          <h4 style="font-size:14px; color:#fff; margin-bottom:10px;">Simulation Closed-Loop Trace Output:</h4>
+          <div id="simulation-output-log" style="min-height:120px; background:rgba(0,0,0,0.3); border-radius:var(--radius-sm); border:1px solid var(--border-color); padding:16px; font-family:monospace; font-size:13px;">
+            <div style="color:var(--text-muted);">Select any scenario above to watch the 6-stage closed loop adapt live.</div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       MODALS
+       ==================================================================== -->
+  
+  <!-- Daily Reflection Modal -->
+  <div class="modal-overlay" id="reflection-modal">
+    <div class="modal-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <h3 style="color:#fff; font-size:18px;">Daily Evening Reflection Check-in</h3>
+        <button style="background:none; border:none; color:var(--text-muted); font-size:20px; cursor:pointer;" onclick="closeModal('reflection-modal')">&times;</button>
+      </div>
+      <form onsubmit="submitReflectionForm(event)">
+        <div class="form-group">
+          <label>Energy Level Today: <span id="ref-energy-val" style="color:var(--accent-primary); font-weight:700;">3 / 5</span></label>
+          <input type="range" id="ref-energy-slider" min="1" max="5" value="3" class="form-control" style="padding:0;" />
+        </div>
+        <div class="form-group">
+          <label>Primary Mood</label>
+          <select id="ref-mood-select" class="form-control">
+            <option value="focused">Focused & Productive</option>
+            <option value="steady">Steady Progress</option>
+            <option value="tired">Tired / High Lecture Fatigue</option>
+            <option value="anxious">Anxious About Deadlines</option>
+            <option value="unmotivated">Struggling with Focus</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Self-Reflection Note</label>
+          <textarea id="ref-text" rows="3" class="form-control" placeholder="What worked well? Where did you feel cognitive friction?"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Obstacles / Distractions</label>
+          <input type="text" id="ref-obstacles" class="form-control" placeholder="e.g. 5 hours of back-to-back lectures, noise, headache" />
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('reflection-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save & Score Burnout</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Task Modal -->
+  <div class="modal-overlay" id="add-task-modal">
+    <div class="modal-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+        <h3 style="color:#fff; font-size:18px;">Add New Study Task</h3>
+        <button style="background:none; border:none; color:var(--text-muted); font-size:20px; cursor:pointer;" onclick="closeModal('add-task-modal')">&times;</button>
+      </div>
+      <form onsubmit="handleAddTaskForm(event)">
+        <div class="form-group">
+          <label>Task Title</label>
+          <input type="text" id="new-task-title" required class="form-control" placeholder="e.g. Automata Pumping Lemma 5 Worked Proofs" />
+        </div>
+        <div class="form-group">
+          <label>Course / Topic Reference</label>
+          <input type="text" id="new-task-topic" class="form-control" value="Automata & Formal Languages" />
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+          <div class="form-group">
+            <label>Estimated Minutes</label>
+            <input type="number" id="new-task-mins" value="45" min="10" max="240" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label>Cognitive Load</label>
+            <select id="new-task-load" class="form-control">
+              <option value="high">High (Proof / Heavy Math)</option>
+              <option value="medium" selected>Medium (Standard Study)</option>
+              <option value="low">Low (Light Review)</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+          <button type="button" class="btn btn-secondary" onclick="closeModal('add-task-modal')">Cancel</button>
+          <button type="submit" class="btn btn-primary">Create Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Explanation Modal -->
+  <div class="modal-overlay" id="explanation-modal">
+    <div class="modal-content" style="max-width:700px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <h3 style="color:#fff; font-size:18px;">Grounded Pedagogical Explanation</h3>
+        <button style="background:none; border:none; color:var(--text-muted); font-size:20px; cursor:pointer;" onclick="closeModal('explanation-modal')">&times;</button>
+      </div>
+      <div id="explanation-modal-body"></div>
+      <div style="margin-top:20px; text-align:right;">
+        <button class="btn btn-secondary" onclick="closeModal('explanation-modal')">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/static/js/app.js"></script>
+  <script>
+    async function handleAddTaskForm(e) {
+      e.preventDefault();
+      const title = document.getElementById('new-task-title').value;
+      const topic_ref = document.getElementById('new-task-topic').value;
+      const estimated_mins = parseInt(document.getElementById('new-task-mins').value);
+      const cognitive_load = document.getElementById('new-task-load').value;
+
+      try {
+        const res = await fetch('/api/planning/tasks', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({title, topic_ref, estimated_mins, cognitive_load})
+        }).then(r => r.json());
+
+        if (res.status === 'success') {
+          closeModal('add-task-modal');
+          showNotification('Task added to planner with adaptive delay buffering!', 'success');
+          await fetchAllData();
+          renderPlanner();
+          renderDashboard();
+        }
+      } catch (err) {
+        showNotification('Task creation error: ' + err.message, 'danger');
+      }
+    }
+  </script>
+</body>
+</html>

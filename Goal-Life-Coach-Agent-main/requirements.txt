@@ -1,0 +1,10 @@
+# Production-quality, free-tier-friendly Goal & Life Coach Agent
+# Graduation Project: Generative AI Personal Life & Study Coach (Egyptian DEPI)
+
+langgraph>=0.2.0
+langchain>=0.3.0
+langchain-google-genai>=2.0.0
+pydantic>=2.7.0
+python-dotenv>=1.0.0
+pytest>=8.0.0
+
