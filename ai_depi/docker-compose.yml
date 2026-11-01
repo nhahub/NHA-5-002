@@ -1,0 +1,7 @@
+services:
+  learning-api:
+    build: .
+    ports: ["8000:8000"]
+    env_file: [.env]
+    volumes: ["./data:/service/data"]
+    # Ollama remains an external service; set OLLAMA_BASE_URL accordingly.

@@ -1,0 +1,501 @@
+
+## 1) `POST /learning/explain`
+
+### ✅ Relevant
+
+```json
+{
+  "topic": "Ancient Egypt",
+  "question": "Why was the Nile River important to the development of ancient Egyptian civilization?",
+  "difficulty": "medium",
+  "explanation_depth": "standard",
+  "knowledge_mode": "learning_materials_only",
+  "learner_profile": {
+    "user_id": "test_user_001",
+    "overall_level": "intermediate",
+    "topic_mastery": {
+      "Ancient Egypt": 0.65
+    },
+    "weak_topics": [
+      "Ancient Egyptian agriculture"
+    ],
+    "strong_topics": [
+      "Ancient Egyptian history"
+    ],
+    "recent_quiz_results": [],
+    "recent_exam_results": [],
+    "historical_performance": {},
+    "question_accuracy": 0.75,
+    "difficulty_performance": {
+      "easy": 0.9,
+      "medium": 0.75,
+      "hard": 0.5
+    },
+    "misconception_history": [],
+    "recommended_revision_topics": [
+      "Nile River and agriculture"
+    ]
+  }
+}
+```
+
+### ❌ Not Relevant
+
+```json
+{
+  "topic": "Ancient Egypt",
+  "question": "How does quantum teleportation transfer a human being instantly from one place to another?",
+  "difficulty": "medium",
+  "explanation_depth": "standard",
+  "knowledge_mode": "learning_materials_only",
+  "learner_profile": {
+    "user_id": "test_user_001",
+    "overall_level": "intermediate",
+    "topic_mastery": {
+      "Ancient Egypt": 0.65
+    },
+    "weak_topics": [],
+    "strong_topics": [],
+    "recent_quiz_results": [],
+    "recent_exam_results": [],
+    "historical_performance": {},
+    "question_accuracy": 0.75,
+    "difficulty_performance": {
+      "easy": 0.9,
+      "medium": 0.75,
+      "hard": 0.5
+    },
+    "misconception_history": [],
+    "recommended_revision_topics": []
+  }
+}
+```
+
+---
+
+# 2) `POST /learning/summarize`
+
+### ✅ Relevant
+
+```json
+{
+  "topic": "Ancient Egyptian Agriculture",
+  "style": "concise",
+  "knowledge_mode": "learning_materials_only",
+  "learner_profile": {
+    "user_id": "test_user_001",
+    "overall_level": "intermediate",
+    "topic_mastery": {
+      "Ancient Egyptian Agriculture": 0.6
+    },
+    "weak_topics": [
+      "Agriculture"
+    ],
+    "strong_topics": [
+      "Ancient Egypt"
+    ],
+    "recent_quiz_results": [],
+    "recent_exam_results": [],
+    "historical_performance": {},
+    "question_accuracy": 0.75,
+    "difficulty_performance": {
+      "easy": 0.9,
+      "medium": 0.75,
+      "hard": 0.5
+    },
+    "misconception_history": [],
+    "recommended_revision_topics": [
+      "Emmer wheat and barley",
+      "Nile inundation"
+    ]
+  }
+}
+```
+
+### ❌ Not Relevant
+
+```json
+{
+  "topic": "Quantum Computing",
+  "style": "concise",
+  "knowledge_mode": "learning_materials_only",
+  "learner_profile": {
+    "user_id": "test_user_001",
+    "overall_level": "intermediate",
+    "topic_mastery": {
+      "Quantum Computing": 0.4
+    },
+    "weak_topics": [
+      "Quantum algorithms"
+    ],
+    "strong_topics": [],
+    "recent_quiz_results": [],
+    "recent_exam_results": [],
+    "historical_performance": {},
+    "question_accuracy": 0.75,
+    "difficulty_performance": {
+      "easy": 0.9,
+      "medium": 0.75,
+      "hard": 0.5
+    },
+    "misconception_history": [],
+    "recommended_revision_topics": []
+  }
+}
+```
+
+---
+
+# 3) `POST /learning/mcq`
+
+### ✅ Relevant
+
+```json
+{
+  "topic": "Ancient Egypt",
+  "number_of_questions": 5,
+  "difficulty": "medium",
+  "question_style": "conceptual",
+  "requested_concepts": [
+    "Nile River",
+    "agriculture",
+    "ancient Egyptian civilization"
+  ],
+  "knowledge_mode": "learning_materials_only",
+  "learner_profile": {
+    "user_id": "test_user_001",
+    "overall_level": "intermediate",
+    "topic_mastery": {
+      "Ancient Egypt": 0.65
+    },
+    "weak_topics": [
+      "Ancient Egyptian agriculture"
+    ],
+    "strong_topics": [],
+    "recent_quiz_results": [],
+    "recent_exam_results": [],
+    "historical_performance": {},
+    "question_accuracy": 0.75,
+    "difficulty_performance": {
+      "easy": 0.9,
+      "medium": 0.75,
+      "hard": 0.5
+    },
+    "misconception_history": [],
+    "recommended_revision_topics": [
+      "Nile River",
+      "Agriculture"
+    ]
+  }
+}
+```
+
+### ❌ Not Relevant
+
+```json
+{
+  "topic": "Quantum Computing",
+  "number_of_questions": 5,
+  "difficulty": "medium",
+  "question_style": "conceptual",
+  "requested_concepts": [
+    "quantum entanglement",
+    "quantum teleportation"
+  ],
+  "knowledge_mode": "learning_materials_only",
+  "learner_profile": {
+    "user_id": "test_user_001",
+    "overall_level": "intermediate",
+    "topic_mastery": {
+      "Quantum Computing": 0.4
+    },
+    "weak_topics": [
+      "Quantum algorithms"
+    ],
+    "strong_topics": [],
+    "recent_quiz_results": [],
+    "recent_exam_results": [],
+    "historical_performance": {},
+    "question_accuracy": 0.75,
+    "difficulty_performance": {
+      "easy": 0.9,
+      "medium": 0.75,
+      "hard": 0.5
+    },
+    "misconception_history": [],
+    "recommended_revision_topics": []
+  }
+}
+```
+
+---
+
+# 4) `POST /learning/flashcards`
+
+### ✅ Relevant
+
+```json
+{
+  "topic": "Ancient Egypt",
+  "number_of_cards": 10,
+  "difficulty": "medium",
+  "knowledge_mode": "learning_materials_only",
+  "learner_profile": {
+    "user_id": "test_user_001",
+    "overall_level": "intermediate",
+    "topic_mastery": {
+      "Ancient Egypt": 0.65
+    },
+    "weak_topics": [
+      "Agriculture"
+    ],
+    "strong_topics": [
+      "Egyptian rulers"
+    ],
+    "recent_quiz_results": [],
+    "recent_exam_results": [],
+    "historical_performance": {},
+    "question_accuracy": 0.75,
+    "difficulty_performance": {
+      "easy": 0.9,
+      "medium": 0.75,
+      "hard": 0.5
+    },
+    "misconception_history": [],
+    "recommended_revision_topics": [
+      "Nile River",
+      "Agriculture",
+      "Ancient Egyptian writing"
+    ]
+  }
+}
+```
+
+### ❌ Not Relevant
+
+```json
+{
+  "topic": "Machine Learning",
+  "number_of_cards": 10,
+  "difficulty": "medium",
+  "knowledge_mode": "learning_materials_only",
+  "learner_profile": {
+    "user_id": "test_user_001",
+    "overall_level": "intermediate",
+    "topic_mastery": {
+      "Machine Learning": 0.5
+    },
+    "weak_topics": [
+      "Gradient descent"
+    ],
+    "strong_topics": [],
+    "recent_quiz_results": [],
+    "recent_exam_results": [],
+    "historical_performance": {},
+    "question_accuracy": 0.75,
+    "difficulty_performance": {
+      "easy": 0.9,
+      "medium": 0.75,
+      "hard": 0.5
+    },
+    "misconception_history": [],
+    "recommended_revision_topics": []
+  }
+}
+```
+
+---
+
+# 5) `POST /learning/exam`
+
+### ✅ Relevant
+
+```json
+{
+  "topics": [
+    "Ancient Egypt",
+    "Nile River",
+    "Ancient Egyptian agriculture"
+  ],
+  "number_of_questions": 10,
+  "difficulty": "medium",
+  "time_limit_minutes": 15,
+  "weak_topic_emphasis": true,
+  "knowledge_mode": "learning_materials_only",
+  "learner_profile": {
+    "user_id": "test_user_001",
+    "overall_level": "intermediate",
+    "topic_mastery": {
+      "Ancient Egypt": 0.65,
+      "Nile River": 0.55,
+      "Agriculture": 0.5
+    },
+    "weak_topics": [
+      "Agriculture",
+      "Nile River"
+    ],
+    "strong_topics": [
+      "Ancient Egyptian rulers"
+    ],
+    "recent_quiz_results": [],
+    "recent_exam_results": [],
+    "historical_performance": {},
+    "question_accuracy": 0.75,
+    "difficulty_performance": {
+      "easy": 0.9,
+      "medium": 0.75,
+      "hard": 0.5
+    },
+    "misconception_history": [],
+    "recommended_revision_topics": [
+      "Nile River",
+      "Agriculture"
+    ]
+  }
+}
+```
+
+### ❌ Not Relevant
+
+```json
+{
+  "topics": [
+    "Quantum Physics",
+    "Quantum Teleportation"
+  ],
+  "number_of_questions": 10,
+  "difficulty": "medium",
+  "time_limit_minutes": 15,
+  "weak_topic_emphasis": true,
+  "knowledge_mode": "learning_materials_only",
+  "learner_profile": {
+    "user_id": "test_user_001",
+    "overall_level": "intermediate",
+    "topic_mastery": {
+      "Quantum Physics": 0.4
+    },
+    "weak_topics": [
+      "Quantum Teleportation"
+    ],
+    "strong_topics": [],
+    "recent_quiz_results": [],
+    "recent_exam_results": [],
+    "historical_performance": {},
+    "question_accuracy": 0.75,
+    "difficulty_performance": {
+      "easy": 0.9,
+      "medium": 0.75,
+      "hard": 0.5
+    },
+    "misconception_history": [],
+    "recommended_revision_topics": []
+  }
+}
+```
+
+---
+
+# 6) `POST /learning/evaluate-answer`
+
+### ✅ Relevant
+
+هنا خليت `correct_answer` نفسها موجودة في الـ PDF، والـ student answer غلط شوية عشان تشوف الـ evaluation والـ grounding.
+
+```json
+{
+  "question": "What crops were chiefly cultivated in ancient Egyptian agriculture?",
+  "student_answer": "Rice and corn were the main crops.",
+  "correct_answer": "Emmer wheat and barley were the chief cereal crops.",
+  "topic": "Ancient Egyptian Agriculture",
+  "difficulty": "medium",
+  "knowledge_mode": "learning_materials_only",
+  "learner_profile": {
+    "user_id": "test_user_001",
+    "overall_level": "intermediate",
+    "topic_mastery": {
+      "Ancient Egyptian Agriculture": 0.5
+    },
+    "weak_topics": [
+      "Agriculture"
+    ],
+    "strong_topics": [
+      "Ancient Egyptian history"
+    ],
+    "recent_quiz_results": [],
+    "recent_exam_results": [],
+    "historical_performance": {},
+    "question_accuracy": 0.6,
+    "difficulty_performance": {
+      "easy": 0.9,
+      "medium": 0.6,
+      "hard": 0.4
+    },
+    "misconception_history": [],
+    "recommended_revision_topics": [
+      "Emmer wheat",
+      "Barley"
+    ]
+  }
+}
+```
+
+### ❌ Not Relevant
+
+```json
+{
+  "question": "How does quantum teleportation work?",
+  "student_answer": "It instantly transports a physical object through space.",
+  "correct_answer": "Quantum teleportation transfers quantum information using entanglement and classical communication.",
+  "topic": "Quantum Computing",
+  "difficulty": "medium",
+  "knowledge_mode": "learning_materials_only",
+  "learner_profile": {
+    "user_id": "test_user_001",
+    "overall_level": "intermediate",
+    "topic_mastery": {
+      "Quantum Computing": 0.4
+    },
+    "weak_topics": [
+      "Quantum teleportation"
+    ],
+    "strong_topics": [],
+    "recent_quiz_results": [],
+    "recent_exam_results": [],
+    "historical_performance": {},
+    "question_accuracy": 0.6,
+    "difficulty_performance": {
+      "easy": 0.9,
+      "medium": 0.6,
+      "hard": 0.4
+    },
+    "misconception_history": [],
+    "recommended_revision_topics": []
+  }
+}
+```
+
+## إيه اللي المفروض تشوفه؟
+
+في الـ **Relevant** cases، المتوقع غالبًا:
+
+```text
+HTTP 200
+retrieval_status = sufficient
+grounding_status = grounded
+sources = [ ... ]
+generation = { ... }
+```
+
+وفي الـ **Not Relevant** cases، بما إن `knowledge_mode = learning_materials_only`:
+
+```text
+HTTP 200
+retrieval_status = insufficient
+grounding_status = not_grounded
+sources = []
+generation = null
+```
+
+وده بالضبط بيثبت إن الـ **RAG مش بيخترع إجابة من برّه الـ learning materials** لما الـ relevant evidence مش موجود.
+
+ملاحظة مهمة: الـ `/health` و`/ready` و`/docs` و`/redoc` و`/openapi.json` مش محتاجين JSON body أصلًا؛ الاختبارات الـ 12 دول هم الـ six learning endpoints اللي الـ Swagger schemas اللي بعتهم بتمثلهم.

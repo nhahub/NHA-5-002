@@ -1,0 +1,17 @@
+Metadata-Version: 2.4
+Name: generative-learning-model
+Version: 0.1.0
+Summary: Grounded, personalized generative learning service
+Requires-Python: >=3.11
+Requires-Dist: fastapi>=0.115
+Requires-Dist: uvicorn[standard]>=0.30
+Requires-Dist: pydantic>=2.7
+Requires-Dist: pydantic-settings>=2.2
+Requires-Dist: httpx>=0.27
+Requires-Dist: chromadb>=0.5
+Requires-Dist: pypdf>=4.0
+Requires-Dist: python-dotenv>=1.0
+Requires-Dist: sentence-transformers<6,>=3.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8.0; extra == "dev"
+Requires-Dist: pytest-asyncio>=0.23; extra == "dev"
