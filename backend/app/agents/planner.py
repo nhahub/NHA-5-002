@@ -28,6 +28,7 @@ from app.schema import (
 )
 from app.engine.optimizer import optimize_schedule as _raw_optimize
 from app.engine.deconstructor import deconstruct_task as _raw_deconstruct
+from app.engine.schedule_image import TimetableDraft, parse_timetable_image
 from app.engine.telemetry import (
     compute_workload_density,
     compute_velocity_slip,
@@ -39,6 +40,10 @@ logger = logging.getLogger("adaptive_coach.planner")
 class PlannerAgent:
     """Wrapper and coordinator for Personal Planning capabilities."""
 
+    def parse_timetable_image(self, image: bytes, content_type: str) -> TimetableDraft:
+        """Use the source planning agent's configured Gemini vision model."""
+        return parse_timetable_image(image, content_type)
+
     def optimize(
         self,
         target_date: str,
@@ -48,12 +53,22 @@ class PlannerAgent:
         busy_blocks: Optional[List[Dict[str, str]]] = None,
     ) -> Dict[str, Any]:
         """Run the 5-step deterministic schedule optimization."""
+        from backend.app.database import db
+        user_profile = db.get_user()
+        day_start = adaptive_model.get("day_start") or user_profile.get("day_start")
+        day_end = adaptive_model.get("day_end") or user_profile.get("day_end")
         # Map tasks to StudyTask objects
         study_tasks = []
         for t in tasks:
-            # Only schedule pending or scheduled tasks
+            # Both pending and previously scheduled tasks remain eligible for
+            # a fresh optimization. Completed/missed tasks are final states.
             if t.get("status") in {"completed", "missed"}:
                 continue
+            base_mins = int(t.get("estimated_mins", 30))
+            delay_factor = float(adaptive_model.get("task_delay_factor", 1.0))
+            actual_mins = int(t.get("actual_mins") or 0)
+            learned_focus = int(adaptive_model.get("effective_focus_duration_mins", 35))
+            remaining_mins = max(learned_focus, round(base_mins * delay_factor - actual_mins)) if actual_mins else base_mins
             study_tasks.append(
                 StudyTask(
                     task_id=t.get("task_id", f"T-{len(study_tasks)+1}"),
@@ -61,12 +76,12 @@ class PlannerAgent:
                     title=t.get("title", "Untitled Task"),
                     source=t.get("source", "user"),
                     topic_ref=t.get("topic_ref"),
-                    estimated_mins=int(t.get("estimated_mins", 30)),
-                    adjusted_mins=t.get("adjusted_mins"),
+                    estimated_mins=remaining_mins,
+                    adjusted_mins=remaining_mins if actual_mins else max(5, round(remaining_mins * delay_factor)),
                     deadline=t.get("deadline"),
                     priority_weight=float(t.get("priority_weight", 3.0)),
                     cognitive_load=t.get("cognitive_load", "medium"),
-                    status=t.get("status", "pending"),
+                    status="pending",
                     scheduled_date=t.get("scheduled_date"),
                     scheduled_start=t.get("scheduled_start"),
                     scheduled_end=t.get("scheduled_end"),
@@ -76,11 +91,18 @@ class PlannerAgent:
         # Map lectures to FixedLecture objects
         fixed_lectures = []
         for l in lectures:
+            lecture_date = (l.get("date") or target_date)[:10]
+            if l.get("recurring") == "weekly":
+                try:
+                    if target_date >= lecture_date and __import__("datetime").date.fromisoformat(target_date).weekday() == __import__("datetime").date.fromisoformat(lecture_date).weekday():
+                        lecture_date = target_date
+                except ValueError:
+                    pass
             fixed_lectures.append(
                 FixedLecture(
                     id=l.get("id", f"lec-{len(fixed_lectures)+1}"),
                     day=l.get("day", "Monday"),
-                    date=l.get("date", target_date),
+                    date=lecture_date,
                     start=l.get("start", "09:00"),
                     end=l.get("end", "11:00"),
                     title=l.get("title", "Lecture"),
@@ -88,8 +110,12 @@ class PlannerAgent:
             )
 
         # Build AdaptiveModelContext
+        availability = f"{day_start}-{day_end}" if day_start and day_end else None
         model_ctx = AdaptiveModelContext(
-            peak_productivity_window=adaptive_model.get("peak_productivity_window", "09:00-11:00"),
+            peak_productivity_window=adaptive_model.get("peak_productivity_window") or availability,
+            secondary_productivity_window=adaptive_model.get("secondary_productivity_window") or availability,
+            day_start=day_start,
+            day_end=day_end,
             effective_focus_duration_mins=int(adaptive_model.get("effective_focus_duration_mins", 45)),
             avg_task_completion_ratio=float(adaptive_model.get("avg_task_completion_ratio", 0.75)),
             task_delay_factor=float(adaptive_model.get("task_delay_factor", 1.0)),
@@ -115,9 +141,12 @@ class PlannerAgent:
                 "start": b.start,
                 "end": b.end,
                 "part": b.part,
+                "duration_mins": max(0, (int(b.end[:2]) * 60 + int(b.end[3:]))
+                                      - (int(b.start[:2]) * 60 + int(b.start[3:]))),
             })
 
-        unscheduled = [t.model_dump() for t in getattr(res, "unscheduled_tasks", [])]
+        # ScheduleResult exposes unscheduled task ids (strings), not task models.
+        unscheduled = list(getattr(res, "unscheduled_tasks", []))
 
         return {
             "target_date": target_date,

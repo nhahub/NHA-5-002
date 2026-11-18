@@ -1,9 +1,8 @@
-"""Adaptive Personal Model, Struggle Predictions & Simulation Router."""
+"""Adaptive Personal Model and behavior events router."""
 
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel, Field
 from typing import Any, Dict, List, Optional
-from datetime import datetime, timezone
 
 from backend.app.database import db
 from backend.app.core_loop import core_orchestrator
@@ -23,9 +22,6 @@ class ModelCalibrateIn(BaseModel):
     task_delay_factor: Optional[float] = None
     current_system_mode: Optional[str] = None
 
-class SimulationScenarioIn(BaseModel):
-    scenario: str = Field(..., description="e.g. heavy_lecture_stress, failed_quiz_automata, streak_comeback, ideal_morning_focus")
-
 @router.get("/model")
 def get_personal_model():
     """Return the user's continuously learned Personal Adaptive Model."""
@@ -33,7 +29,7 @@ def get_personal_model():
     user = db.get_user()
     return {
         "status": "success",
-        "user_id": user.get("id", "student-001"),
+        "user_id": user.get("id"),
         "adaptive_model": model,
         "usp_summary": "Continuous behavioral model predicting cognitive friction before failure occurs."
     }
@@ -70,80 +66,8 @@ def ingest_behavior_event(event: EventIn):
     )
     return res
 
-@router.post("/simulate")
-def run_simulation_scenario(sim: SimulationScenarioIn):
-    """Interactive Simulation Lab: Demonstrate live closed-loop adaptation with simulated personas."""
-    scenario = sim.scenario.lower()
-    now = datetime.now(timezone.utc).isoformat()
-
-    if scenario == "heavy_lecture_stress":
-        # Simulate student failing to complete a heavy task after 5 lecture hours
-        event_payload = {
-            "planned_mins": 60,
-            "actual_focus_mins": 15,
-            "day_type": "heavy_lecture",
-            "reason": "Exhaustion after back-to-back classes"
-        }
-        res = core_orchestrator.trigger_behavior_event(
-            event_type="block_cut_short",
-            source="Simulation Lab",
-            payload=event_payload,
-            auto_adapt=True
-        )
-        return {
-            "scenario": "Heavy Lecture Stress",
-            "simulated_action": "Logged 15m focus on a 60m task during a heavy lecture day.",
-            "adaptation_outcome": res,
-            "explanation": "Adaptive Manager detected lecture fatigue, updated procrastination patterns, and triggered PREEMPTIVE_SCHEDULE_RESTRUCTURE."
-        }
-
-    elif scenario == "failed_quiz_automata":
-        # Simulate student getting 40% on an Automata quiz
-        res = core_orchestrator.trigger_behavior_event(
-            event_type="quiz_result",
-            source="Assessment Agent",
-            payload={
-                "topic": "Automata & Formal Languages",
-                "score_pct": 40.0,
-                "failed_concepts": ["Pumping Lemma proofs", "NFA epsilon transitions"],
-                "error_types": {"Conceptual Gap": 3}
-            },
-            auto_adapt=True
-        )
-        return {
-            "scenario": "Diagnostic Quiz Failure (Automata)",
-            "simulated_action": "Submitted 40% diagnostic score in Automata with Pumping Lemma errors.",
-            "adaptation_outcome": res,
-            "explanation": "Mastery dropped below 65% threshold. Adaptive Manager dispatched AI Tutor for remedial practice and scheduled targeted micro-tasks."
-        }
-
-    elif scenario == "streak_comeback":
-        # Simulate missing yesterday then completing today (comeback halving rule)
-        res = core_orchestrator.complete_habit_and_adapt("Daily Deep Work Block")
-        return {
-            "scenario": "Habit Streak & Comeback Protection",
-            "simulated_action": "Checked in daily habit after a missed day with 1 freeze shield.",
-            "adaptation_outcome": res,
-            "explanation": "Streak freeze consumed to protect momentum, preventing morale-damaging reset to zero."
-        }
-
-    else:
-        # Default scenario: High-focus morning session
-        res = core_orchestrator.trigger_behavior_event(
-            event_type="block_completed",
-            source="Planning Agent",
-            payload={"planned_mins": 40, "actual_focus_mins": 40, "day_type": "peak_morning"},
-            auto_adapt=True
-        )
-        return {
-            "scenario": "Peak Morning Focus Session",
-            "simulated_action": "Completed 40-minute focused session during peak window.",
-            "adaptation_outcome": res,
-            "explanation": "Positive completion recorded; confidence in peak productivity window reinforced."
-        }
-
 @router.post("/reset")
 def reset_system_data():
-    """Reset system state to the default student profile for testing."""
-    db.reset_to_default()
-    return {"status": "success", "message": "System state reset to default Egyptian DEPI student persona."}
+    """Reset to a blank workspace without sample user data."""
+    db.reset_to_clean()
+    return {"status": "success", "message": "Workspace reset to a clean state."}

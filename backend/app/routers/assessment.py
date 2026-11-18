@@ -7,6 +7,7 @@ from typing import Any, Dict, List, Optional
 from backend.app.database import db
 from backend.app.core_loop import core_orchestrator
 from backend.app.agents.quiz_agent import assessment_agent
+from backend.app.agents.learning_agent import learning_agent
 
 router = APIRouter(prefix="/assessment", tags=["Assessment & Diagnostics"])
 
@@ -40,13 +41,15 @@ async def upload_course_material(course_id: str, file: UploadFile = File(...)):
             target.unlink(missing_ok=True)
             raise HTTPException(status_code=400, detail="Could not read this PDF")
     material = db.add_material_to_course(course_id, file.filename or filename, filename, str(target), pages, round(len(content)/1024, 1))
-    return {"status": "success", "material": material}
+    index_status = learning_agent.sync_materials()
+    return {"status": "success", "material": material, "learning_index": index_status}
 
 class GenerateQuizIn(BaseModel):
     course_name: str = ""
     lecture_title: Optional[str] = None
     material_filename: Optional[str] = None
     num_questions: int = Field(default=15, ge=5, le=25)
+    target_weakness: Optional[List[str]] = None
 
 class CheckSingleIn(BaseModel):
     question_id: str
@@ -59,6 +62,9 @@ class SubmitQuizIn(BaseModel):
     course_name: str
     questions: List[Dict[str, Any]]
     answers: Dict[str, str]
+    course_id: Optional[str] = None
+    lecture_id: Optional[str] = None
+    task_id: Optional[str] = None
 
 @router.get("/courses")
 def get_quiz_courses():
@@ -74,7 +80,7 @@ def get_quiz_courses():
                 {
                     "id": m.get("id"),
                     "title": m.get("title"),
-                    "filename": m.get("filename"),
+                    "filename": __import__("pathlib").Path(m.get("path") or m.get("filename", "")).name,
                     "pages": m.get("pages")
                 }
                 for m in c.get("materials", [])
@@ -93,10 +99,15 @@ def generate_quiz(req: GenerateQuizIn):
         lecture_title=req.lecture_title,
         material_filename=req.material_filename,
         num_questions=req.num_questions,
-        target_weakness=weaks
+        target_weakness=req.target_weakness or weaks
     )
-    if not quiz.get("questions"):
-        raise HTTPException(status_code=422, detail="لا توجد مادة كافية لإنشاء اختبار. ارفع ملف محاضرة يحتوي على نص قابل للقراءة.")
+    if len(quiz.get("questions", [])) < req.num_questions:
+        if quiz.get("source") == "generation_unavailable":
+            raise HTTPException(status_code=503, detail="المحاضرة مقروءة، لكن مولّد الأسئلة غير متصل. أضف GROQ_API_KEY لتوليد اختبار موثوق من ملفك.")
+        if quiz.get("source") == "generation_incomplete":
+            produced = len(quiz.get("questions", []))
+            raise HTTPException(status_code=422, detail=f"قرأت المحاضرة وحاولت إكمال الاختبار 3 مرات، لكن النموذج أنشأ {produced} من {req.num_questions} سؤالًا صالحًا. جرّب 10 أسئلة أو اختر محاضرة أشمل.")
+        raise HTTPException(status_code=422, detail="لم أستطع إنشاء العدد المطلوب من الأسئلة من نص المحاضرة. جرّب ملفًا أوضح أو محاضرة أشمل.")
     return {"status": "success", "quiz": quiz}
 
 @router.post("/check_single")
@@ -115,11 +126,23 @@ def check_single_question(item: CheckSingleIn):
 @router.post("/submit")
 def submit_quiz(submission: SubmitQuizIn):
     """Grade complete quiz, classify error types, isolate weak concepts, and adapt Personal Model."""
+    if submission.task_id:
+        task = next((item for item in db.get_tasks() if item.get("task_id") == submission.task_id), None)
+        if not task:
+            raise HTTPException(status_code=404, detail="مهمة الاختبار غير موجودة.")
+        if task.get("task_kind") != "assessment" or task.get("status") == "completed":
+            raise HTTPException(status_code=409, detail="مهمة الاختبار دي مش مفتوحة للتسليم.")
+        if (task.get("course_id") != submission.course_id
+                or task.get("lecture_id") != submission.lecture_id):
+            raise HTTPException(status_code=409, detail="الاختبار لا يطابق المادة والمحاضرة المرتبطتين بالمهمة.")
     res = core_orchestrator.submit_quiz_and_adapt(
         quiz_id=submission.quiz_id,
         topic=submission.course_name,
         questions=submission.questions,
-        answers=submission.answers
+        answers=submission.answers,
+        course_id=submission.course_id,
+        lecture_id=submission.lecture_id,
+        task_id=submission.task_id,
     )
     return {"status": "success", "diagnostic_report": res}
 

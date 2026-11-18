@@ -7,14 +7,11 @@ from __future__ import annotations
 
 import json
 import logging
-import os
-import shutil
 import threading
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List, Optional
-from pypdf import PdfReader
 
 from backend.app.config import settings
 
@@ -33,15 +30,15 @@ class Database:
         self.load()
 
     def _default_state(self) -> Dict[str, Any]:
-        """Fresh, clean baseline state with auto-discovered course materials."""
+        """Start with a blank workspace and neutral, non-personalized defaults."""
         now = datetime.now(timezone.utc).isoformat()
         
         courses = []
 
         return {
             "user": {
-                "id": "student-001",
-                "name": "Student",
+                "id": f"user-{uuid.uuid4().hex[:12]}",
+                "name": "",
                 "email": "",
                 "university": "",
                 "semester": "",
@@ -50,33 +47,26 @@ class Database:
             },
             "adaptive_model": {
                 "effective_focus_duration_mins": 35,
-                "peak_productivity_window": "09:00-11:00",
-                "task_delay_factor": 1.25,
-                "learning_rate_velocity": 0.65,
-                "avg_task_completion_ratio": 0.80,
-                "procrastination_patterns": [
-                    "Heavy lecture days (> 4 hrs classes)",
-                    "Complex formal theory topics (Automata & Proofs)"
-                ],
-                "topic_mastery": {
-                    "Automata & Formal Languages": 60.0,
-                    "Trend AI & LLM Systems": 85.0
-                },
-                "weak_topics": [
-                    "NFA to DFA subset construction",
-                    "Pumping Lemma proofs"
-                ],
-                "strong_topics": [
-                    "RAG Retrieval Mechanisms",
-                    "Transformer Attention"
-                ],
-                "burnout_risk_score": "Low",
-                "motivation_index": 0.82,
+                "focus_sessions_count": 0,
+                "latest_energy_level": None,
+                "peak_productivity_window": "",
+                "task_delay_factor": 1.0,
+                "learning_rate_velocity": 0.0,
+                "avg_task_completion_ratio": 0.0,
+                "procrastination_patterns": [],
+                "topic_mastery": {},
+                "weak_topics": [],
+                "strong_topics": [],
+                "burnout_risk_score": "unknown",
+                "burnout_risk_value": 0.2,
+                "consecutive_low_days": 0,
+                "motivation_index": 0.0,
                 "current_system_mode": "NORMAL",
                 "last_updated": now,
             },
             "courses": courses,
             "university_schedule": [],
+            "calendar_events": [],
             "tasks": [],
             "scheduled_blocks": [],
             "goals": [],
@@ -88,69 +78,138 @@ class Database:
             "events": []
         }
 
-    def _discover_initial_courses(self) -> List[Dict[str, Any]]:
-        """Organize files found in material/ into initial course structures."""
-        mat_dir = settings.material_dir
-        courses = [
-            {
-                "id": "course-automata",
-                "name": "Theory of Automata & Formal Languages",
-                "code": "AI412",
-                "instructor": "Dr. Ahmed Zakzouk",
-                "description": "Formal languages, DFA, NFA, Context-Free Grammars, and Turing Machines.",
-                "materials": []
-            },
-            {
-                "id": "course-trend-ai",
-                "name": "Trend AI & Modern Deep Learning",
-                "code": "AI415",
-                "instructor": "Dr. Tarek & Department Faculty",
-                "description": "Transformers, LLM architectures, RAG systems, and AI Agents.",
-                "materials": []
-            }
+    def _remove_legacy_demo_entries(self) -> None:
+        """Remove only the application's known, preloaded sample records."""
+        changed = False
+        seeded_goal_ids = {"G-101", "G-102", "G-103"}
+        goals_at_load = self._state.get("goals", [])
+        user_at_load = self._state.get("user", {})
+        legacy_seeded_profile = (
+            user_at_load.get("id") == "student-001"
+            and (any(g.get("goal_id") in seeded_goal_ids for g in goals_at_load)
+                 or user_at_load.get("email") == "ahmed.student@depi.edu.eg")
+        )
+        if legacy_seeded_profile:
+            # This exact account/profile belonged to the bundled fictional
+            # student. Ask the current user for their own profile at next load.
+            user_at_load.update({
+                "id": f"user-{uuid.uuid4().hex[:12]}", "name": "", "email": "",
+                "university": "", "semester": "", "major": "", "bio": "", "avatar_url": "",
+            })
+            changed = True
+        events = self._state.get("events", [])
+        legacy_demo_bundle = any(event.get("event_id") in {"ev-01", "ev-02", "ev-03"} for event in events)
+        if legacy_demo_bundle:
+            # These three stable IDs identify the bundled demo history. It must
+            # not be used to infer a real user's productivity or mastery.
+            self._state["events"] = []
+            self._state["predictions"] = []
+            self._state["assessments"] = []
+            self._state["reflections"] = []
+            achievements = self._state.get("achievements", [])
+            self._state["achievements"] = [a for a in achievements if a.get("key") not in {"streak_3", "first_quiz_master"}]
+            changed = True
+        model = self._state.get("adaptive_model", {})
+        seeded_patterns = [
+            "Heavy lecture days (> 4 hrs classes)",
+            "Complex formal theory topics (Automata & Proofs)",
         ]
-
-        if mat_dir.exists():
-            for f in sorted(mat_dir.iterdir()):
-                if f.is_file() and f.suffix.lower() in {".pdf", ".txt", ".docx"}:
-                    try:
-                        pages = len(PdfReader(f).pages) if f.suffix.lower() == ".pdf" else 1
-                    except Exception:
-                        pages = 1
-                    size_kb = round(f.stat().st_size / 1024, 1)
-
-                    mat_item = {
-                        "id": f"mat-{f.stem.replace(' ', '-').lower()}",
-                        "title": f.name.replace(".pdf.pdf", "").replace(".pdf", ""),
-                        "filename": f.name,
-                        "path": str(f),
-                        "pages": pages,
-                        "size_kb": size_kb,
-                        "uploaded_at": datetime.now(timezone.utc).isoformat()
-                    }
-
-                    if "automata" in f.name.lower():
-                        courses[0]["materials"].append(mat_item)
-                    else:
-                        courses[1]["materials"].append(mat_item)
-
-        return courses
+        if (model.get("procrastination_patterns") == seeded_patterns
+                or {"Automata & Formal Languages", "Trend AI & LLM Systems"}.issubset(model.get("topic_mastery", {}))):
+            self._state["adaptive_model"] = self._default_state()["adaptive_model"]
+            changed = True
+        demo_lecture_ids = {"lec-1", "lec-2", "lec-3", "lec-4"}
+        demo_task_ids = {"T101", "T102", "T103"}
+        demo_course_ids = {"course-automata", "course-trend-ai"}
+        courses = self._state.get("courses", [])
+        cleaned = [item for item in courses if item.get("id") not in demo_course_ids]
+        if len(cleaned) != len(courses):
+            self._state["courses"] = cleaned
+            changed = True
+        schedule = self._state.get("university_schedule", [])
+        cleaned = [item for item in schedule if item.get("id") not in demo_lecture_ids]
+        if len(cleaned) != len(schedule):
+            self._state["university_schedule"] = cleaned
+            changed = True
+        tasks = self._state.get("tasks", [])
+        cleaned = [item for item in tasks if item.get("task_id") not in demo_task_ids]
+        if legacy_demo_bundle:
+            cleaned = [item for item in cleaned if not (
+                item.get("task_id") == "T104" and item.get("title") == "learn"
+                and item.get("status") == "completed" and item.get("actual_mins") == 35
+            )]
+        if len(cleaned) != len(tasks):
+            self._state["tasks"] = cleaned
+            changed = True
+        blocks = self._state.get("scheduled_blocks", [])
+        completed_ids = {
+            item.get("task_id") for item in self._state.get("tasks", [])
+            if item.get("status") in {"completed", "missed"}
+        }
+        cleaned = [item for item in blocks if item.get("task_id") not in demo_task_ids | completed_ids]
+        if len(cleaned) != len(blocks):
+            self._state["scheduled_blocks"] = cleaned
+            changed = True
+        goals = self._state.get("goals", [])
+        cleaned = [item for item in goals if item.get("goal_id") not in seeded_goal_ids]
+        if len(cleaned) != len(goals):
+            self._state["goals"] = cleaned
+            changed = True
+        habits = self._state.get("habits", [])
+        demo_habits = {"Daily Deep Focus Session", "Daily Deep Work Block", "Evening Reflection & Energy Check-in"}
+        cleaned = [item for item in habits if item.get("name") not in demo_habits]
+        if len(cleaned) != len(habits):
+            self._state["habits"] = cleaned
+            changed = True
+        achievements = self._state.get("achievements", [])
+        cleaned = [item for item in achievements if item.get("key") != "streak_3"]
+        if len(cleaned) != len(achievements):
+            self._state["achievements"] = cleaned
+            changed = True
+        predictions = self._state.get("predictions", [])
+        cleaned = [item for item in predictions if item.get("id") != "pred-001"]
+        if len(cleaned) != len(predictions):
+            self._state["predictions"] = cleaned
+            changed = True
+        if "calendar_events" not in self._state:
+            self._state["calendar_events"] = []
+            changed = True
+        if changed:
+            self.save()
 
     def load(self) -> None:
-        """Load state from JSON storage file or initialize default."""
+        """Load persisted state, or initialize a blank workspace on first run."""
         with self._lock:
-            if self.store_path.exists():
-                try:
-                    with open(self.store_path, "r", encoding="utf-8") as f:
-                        self._state = json.load(f)
-                        if "courses" not in self._state:
-                            self._state["courses"] = self._discover_initial_courses()
-                        logger.info("Loaded state from %s", self.store_path)
-                        return
-                except Exception as e:
-                    logger.warning("Failed to parse store file %s: %s. Using default state.", self.store_path, e)
-            self._state = self._default_state()
-            self.save()
+            if not self.store_path.exists():
+                self._state = self._default_state()
+                self.save()
+                return
+
+            try:
+                with self.store_path.open("r", encoding="utf-8") as store:
+                    loaded = json.load(store)
+            except (OSError, json.JSONDecodeError) as exc:
+                # Keep the existing file untouched so a transient or malformed
+                # store cannot silently erase a user's data.
+                raise RuntimeError(
+                    f"Could not load application data from {self.store_path}: {exc}"
+                ) from exc
+
+            if not isinstance(loaded, dict):
+                raise RuntimeError(
+                    f"Application data at {self.store_path} must contain a JSON object."
+                )
+
+            defaults = self._default_state()
+            self._state = {**defaults, **loaded}
+            for key, value in defaults.items():
+                if key not in loaded:
+                    continue
+                if key == "adaptive_model" and isinstance(value, dict) and isinstance(loaded[key], dict):
+                    self._state[key] = {**value, **loaded[key]}
+                elif isinstance(value, list) and not isinstance(loaded[key], list):
+                    self._state[key] = value
+            self._remove_legacy_demo_entries()
 
     def save(self) -> None:
         """Persist current state to JSON storage atomically."""
@@ -322,7 +381,12 @@ class Database:
 
     def add_prediction(self, pred: Dict[str, Any]) -> None:
         with self._lock:
-            self._state.setdefault("predictions", []).insert(0, pred)
+            predictions = self._state.setdefault("predictions", [])
+            key = (pred.get("target"), pred.get("target_id"))
+            for old in predictions:
+                if (old.get("target"), old.get("target_id")) == key and old.get("status") == "active":
+                    old["status"] = "updated"
+            predictions.insert(0, pred)
             self.save()
 
     def get_assessments(self) -> List[Dict[str, Any]]:
